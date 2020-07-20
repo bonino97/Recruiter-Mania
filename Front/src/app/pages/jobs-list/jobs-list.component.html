@@ -1,0 +1,57 @@
+<hr>
+<div class="row">
+    <div class="col-lg-12">        
+        <div class="card border">
+
+          <div class=" card-body">
+            <div class=" toolbar"></div>
+            <div class="dataTables_wrapper py-4">
+            <div class=" table-responsive">
+              <table class=" table">
+                <thead class=" text-primary">
+                  <tr>
+                    <th>Enterprise</th>
+                    <th>Job Position</th>
+                    <th class=" text-center">Seniority</th>
+                    <th class=" text-center">Place</th>
+                    <th class=" text-right">Salary</th>
+                    <th class=" text-right">Info</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let job of jobs">
+                    <td>{{job.Enterprise}}</td>
+                    <td>{{job.Title}}</td>
+                    <td class="text-center">{{job.Seniority}}</td>
+                    <td class="text-center">{{job.Place}}</td>
+                    <td class="text-right">{{job.Salary}}</td>
+                    <td class="text-right">
+                      <button (click)="openJob(job)" class=" btn btn-icon btn-round btn-sm btn-simple btn-twitter">
+                        <i class="fas fa-info"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <hr>
+              <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+
+                  <li class="page-item">
+                    <button class="page-link" *ngIf="!disablePreviousButton" (click)="previous()">Previous</button>
+                  </li>
+
+                  <li class="page-item"  *ngFor="let i of totalPages" [ngClass]="(actualPage == i) ? 'page-item active':'page-item'" ><button class="page-link" (click)="actual(i)">{{i}}</button></li>
+
+                  <li class="page-item">
+                    <button class="page-link" *ngIf="!disableNextButton" (click)="next()">Next</button>
+                  </li>
+
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+
+    </div>
+  </div>

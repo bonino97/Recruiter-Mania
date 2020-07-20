@@ -1,0 +1,24 @@
+.border {
+    border: 0.0625rem solid #00bfda !important;
+}
+
+.wizard-background{
+    background-color: #212133 !important;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] { -moz-appearance:textfield; }
+
+.card {
+  border-radius: 0.2857 rem;
+}
+
+.card .editor{
+  margin-bottom: 0px;
+}
+

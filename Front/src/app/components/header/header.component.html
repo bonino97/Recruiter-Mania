@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-lg-5 col-md-6">
+
+    <div *ngIf="!!tagLine" class="card card-nav-tabs">
+      <div class="card-body">
+        <blockquote class="blockquote blockquote-success">
+          <h2 *ngIf="!!tagLine" class="h1 text-center"><b>{{tagLine}}</b></h2>
+          <p *ngIf="!!subTagLine" class="h3 text-center"><b>{{subTagLine}}</b></p>
+          <hr>
+          <button type="button" [routerLink]="[newJobPath]" *ngIf="!!jobButton" class="btn btn-success btn-sm btn-simple mr-1 btn-block animated fadeIn slow"><i class=" tim-icons icon-check-2 mb-1"></i>&nbsp;&nbsp;Post Job</button>
+        </blockquote>
+      </div>
+    </div>
+    
+  </div>
+</div>

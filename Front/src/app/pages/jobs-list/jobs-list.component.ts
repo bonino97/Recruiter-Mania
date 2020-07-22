@@ -1,6 +1,7 @@
 import { Job } from './../../models/job.model';
 import { LayoutService } from './../../services/layout.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-jobs-list',
@@ -9,7 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JobsListComponent implements OnInit {
 
-  constructor(public _LayoutService: LayoutService) {}
+  constructor(
+    public _LayoutService: LayoutService,
+    public router: Router,
+    ) {}
 
   jobs: Job[];
   actualPage;
@@ -19,7 +23,7 @@ export class JobsListComponent implements OnInit {
   limit = 5;
 
   disablePreviousButton: boolean = false;
-  disableNextButton: boolean = false; 
+  disableNextButton: boolean = false;
 
   ngOnInit() {
     this._LayoutService.GetJobs(1,this.limit)
@@ -122,8 +126,9 @@ export class JobsListComponent implements OnInit {
     });
   }
 
-  openJob(job){
-    console.log(job);
+  openJob(job: Job){
+    const jobUrl = `/jobs/job/${job.Url}`;
+    this.router.navigate([jobUrl]);
   }
 
 }

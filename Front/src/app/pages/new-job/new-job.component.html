@@ -3,6 +3,7 @@
         <div class="card border wizard-background">
             <div class=" content">
                 <div class=" col-md-10 mr-auto ml-auto">
+                  <h1 class="display-4 text-muted text-center">Create your Job Position</h1>
                   <div class=" wizard-container">
                     <div
                       class="bs-stepper card card-wizard"
@@ -132,36 +133,37 @@
                                     />
 
                                   </div>
+                                  <div
+                                  class=" input-group"
+                                  [ngClass]="{
+                                    'input-group-focus': focus2 === true,
+                                    'has-danger':
+                                      ((focus2Touched || wizard) &&
+                                        wizardFormControls.place.errors) ||
+                                      (wizardFormControls.place.value != '' &&
+                                        wizardFormControls.place.errors),
+                                    'has-success': !wizardFormControls.place.errors
+                                  }"
+                                >
+                                  <div class=" input-group-prepend">
+                                    <div class=" input-group-text">
+                                      <i class=" tim-icons icon-compass-05"> </i>
+                                    </div>
+                                  </div>
+                                  <input
+                                    class=" form-control"
+                                    name="place"
+                                    formControlName="place"
+                                    placeholder="Place..."
+                                    type="text"
+                                    (focus)="focus2 = true; focus2Touched = true"
+                                    (blur)="focus2 = false"
+                                  />
+
+                                </div>
                                 </div>
                                 <div class=" col-sm-5">
-                                  <div
-                                    class=" input-group"
-                                    [ngClass]="{
-                                      'input-group-focus': focus2 === true,
-                                      'has-danger':
-                                        ((focus2Touched || wizard) &&
-                                          wizardFormControls.place.errors) ||
-                                        (wizardFormControls.place.value != '' &&
-                                          wizardFormControls.place.errors),
-                                      'has-success': !wizardFormControls.place.errors
-                                    }"
-                                  >
-                                    <div class=" input-group-prepend">
-                                      <div class=" input-group-text">
-                                        <i class=" tim-icons icon-compass-05"> </i>
-                                      </div>
-                                    </div>
-                                    <input
-                                      class=" form-control"
-                                      name="place"
-                                      formControlName="place"
-                                      placeholder="Place..."
-                                      type="text"
-                                      (focus)="focus2 = true; focus2Touched = true"
-                                      (blur)="focus2 = false"
-                                    />
 
-                                  </div>
                                   <div
                                     class=" input-group"
                                     [ngClass]="{
@@ -192,68 +194,66 @@
 
                                   </div>
 
-                                </div>
-                                <div class=" col-sm-5">
                                   <div
-                                    class=" input-group"
-                                    [ngClass]="{
-                                      'input-group-focus': focus4 === true,
-                                      'has-danger':
-                                        ((focus4Touched || wizard) &&
-                                          wizardFormControls.contract.errors) ||
-                                        (wizardFormControls.contract.value != '' &&
-                                          wizardFormControls.contract.errors),
-                                      'has-success': !wizardFormControls.contract.errors
-                                    }"
-                                  >
-                                    <div class=" input-group-prepend">
-                                      <div class=" input-group-text">
-                                        <i class=" tim-icons icon-paper"> </i>
-                                      </div>
+                                  class=" input-group"
+                                  [ngClass]="{
+                                    'input-group-focus': focus4 === true,
+                                    'has-danger':
+                                      ((focus4Touched || wizard) &&
+                                        wizardFormControls.contract.errors) ||
+                                      (wizardFormControls.contract.value != '' &&
+                                        wizardFormControls.contract.errors),
+                                    'has-success': !wizardFormControls.contract.errors
+                                  }"
+                                >
+                                  <div class=" input-group-prepend">
+                                    <div class=" input-group-text">
+                                      <i class=" tim-icons icon-paper"> </i>
                                     </div>
-                                    <input
-                                      class=" form-control"
-                                      name="title"
-                                      placeholder="Contract..."
-                                      type="text"
-                                      formControlName="contract"
-                                      (focus)="focus4 = true; focus4Touched = true"
-                                      (blur)="focus4 = false"
-                                    />
+                                  </div>
+                                  <input
+                                    class=" form-control"
+                                    name="title"
+                                    placeholder="Contract..."
+                                    type="text"
+                                    formControlName="contract"
+                                    (focus)="focus4 = true; focus4Touched = true"
+                                    (blur)="focus4 = false"
+                                  />
 
                                   </div>
-                                </div>
 
-                                <div class=" col-sm-5">
                                   <div
-                                    class=" input-group"
-                                    [ngClass]="{
-                                      'input-group-focus': focus5 === true,
-                                      'has-danger':
-                                        ((focus5Touched || wizard) &&
-                                          wizardFormControls.seniority.errors) ||
-                                        (wizardFormControls.seniority.value != '' &&
-                                          wizardFormControls.seniority.errors),
-                                      'has-success': !wizardFormControls.seniority.errors
-                                    }"
-                                  >
-                                    <div class=" input-group-prepend">
-                                      <div class=" input-group-text">
-                                        <i class=" tim-icons icon-tie-bow"> </i>
-                                      </div>
+                                  class=" input-group"
+                                  [ngClass]="{
+                                    'input-group-focus': focus5 === true,
+                                    'has-danger':
+                                      ((focus5Touched || wizard) &&
+                                        wizardFormControls.seniority.errors) ||
+                                      (wizardFormControls.seniority.value != '' &&
+                                        wizardFormControls.seniority.errors),
+                                    'has-success': !wizardFormControls.seniority.errors
+                                  }"
+                                >
+                                  <div class=" input-group-prepend">
+                                    <div class=" input-group-text">
+                                      <i class=" tim-icons icon-tie-bow"> </i>
                                     </div>
-                                    <input
-                                      class=" form-control"
-                                      name="title"
-                                      placeholder="Seniority..."
-                                      type="text"
-                                      formControlName="seniority"
-                                      (focus)="focus5 = true; focus5Touched = true"
-                                      (blur)="focus5 = false"
-                                    />
+                                  </div>
+                                  <input
+                                    class=" form-control"
+                                    name="title"
+                                    placeholder="Seniority..."
+                                    type="text"
+                                    formControlName="seniority"
+                                    (focus)="focus5 = true; focus5Touched = true"
+                                    (blur)="focus5 = false"
+                                  />
 
                                   </div>
+
                                 </div>
+                                
                               </div>
                             </div>
 
@@ -262,7 +262,7 @@
 
                               <div class=" row justify-content-center">
                                 <div class=" col-sm-12">
-                                  <h5 class=" info-text">Tell us about the requireds knowledges/skills!</h5>
+                                  <h5 class="info-text">Tell us about the requireds knowledges/skills!</h5>
                                 </div>
                                 <div class=" col-md-6 mb-4 justify-content-center">
                                   <tag-input formControlName="skills" name="skills" theme="regular-theme">
@@ -274,14 +274,14 @@
                             </div>
 
 
-                            <div class="show tab-pane" id="address">
+                            <div class="show tab-pane " id="address">
                               <div class=" row justify-content-center">
                                 <h5 class=" info-text">Ending the post, tell us about the job!</h5>
                                 <div class=" col-lg-10 text-center">
 
-                                  <div class="card editor">
-                                    <!-- Quill Editor de Descripcion -->
-                                    <quill-editor [style]="editorStyle" formControlName="description">
+                                  <div class="card ">
+                                    
+                                    <!-- <quill-editor [style]="editorStyle" formControlName="description">
                                       <div quill-editor-toolbar>
 
                                         <button class="ql-list" value="ordered" type="button"><svg viewBox="0 0 18 18"> <line class="ql-stroke" x1="7" x2="15" y1="4" y2="4"></line> <line class="ql-stroke" x1="7" x2="15" y1="9" y2="9"></line> <line class="ql-stroke" x1="7" x2="15" y1="14" y2="14"></line> <line class="ql-stroke ql-thin" x1="2.5" x2="4.5" y1="5.5" y2="5.5"></line> <path class="ql-fill" d="M3.5,6A0.5,0.5,0,0,1,3,5.5V3.085l-0.276.138A0.5,0.5,0,0,1,2.053,3c-0.124-.247-0.023-0.324.224-0.447l1-.5A0.5,0.5,0,0,1,4,2.5v3A0.5,0.5,0,0,1,3.5,6Z"></path> <path class="ql-stroke ql-thin" d="M4.5,10.5h-2c0-.234,1.85-1.076,1.85-2.234A0.959,0.959,0,0,0,2.5,8.156"></path> <path class="ql-stroke ql-thin" d="M2.5,14.846a0.959,0.959,0,0,0,1.85-.109A0.7,0.7,0,0,0,3.75,14a0.688,0.688,0,0,0,.6-0.736,0.959,0.959,0,0,0-1.85-.109"></path> </svg></button>
@@ -301,7 +301,10 @@
                                         </span>
 
                                       </div>
-                                    </quill-editor>
+                                    </quill-editor> -->
+                                    <div>
+                                      <textarea class=" form-control" cols="80" rows="4" formControlName="description"> </textarea>
+                                    </div>
                                     
                                   </div>
                                 </div>                    
@@ -333,13 +336,22 @@
                             />
                           </div>
                           <div class=" pull-left">
-                            <input
+                            <input 
+                              *ngIf="(value > 15)"
                               class=" btn btn-previous btn-fill btn-simple btn-info btn-wd"
                               name="previous"
                               type="button"
                               (click)="previous()"
                               value="Previous"
                             />
+                            <input 
+                            *ngIf="(value <= 15)"
+                            class=" btn btn-previous btn-fill btn-simple btn-info btn-wd"
+                            name="previous"
+                            type="button"
+                            [routerLink]="['/jobs']" routerLinkActive="router-link-active" 
+                            value="Previous"
+                          />
                           </div>
                           <div class=" clearfix"></div>
                         </div>
@@ -348,7 +360,7 @@
                   </div>
                 </div>
               </div>
-              
+
         </div>
     </div>
 </div>

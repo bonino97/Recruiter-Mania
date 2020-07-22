@@ -101,7 +101,7 @@ export class NewJobComponent implements OnInit {
           .forEach((element:any) => {
             this.skills.push(element.value);
           });
-          
+
           this.value = 100;
 
           let job = new Job ( 
@@ -121,11 +121,9 @@ export class NewJobComponent implements OnInit {
           this._LayoutService.PostNewJob(job)
             .subscribe((data:Job) => {
               swal.fire({
-                type: 'success',
                 html: "<span style='color:grey'> We are redirecting to your post... <span>",
                 timer: 2000,
-                showConfirmButton: true,
-                confirmButtonClass: "btn btn-danger btn-simple",
+                showConfirmButton: false
               }).then( () => {
                 this.router.navigate([`/jobs/`]);
               });
@@ -134,8 +132,7 @@ export class NewJobComponent implements OnInit {
               type: 'error',
               html: "<span style='color:grey'> Sorry, something broke here, please try again later... <span>",
               timer: 2000,
-              showConfirmButton: true,
-              confirmButtonClass: "btn btn-danger btn-simple",
+              showConfirmButton: false
             }).then( () => {
               this.router.navigate([`/jobs/`]);
             });
@@ -198,7 +195,7 @@ export class NewJobComponent implements OnInit {
       salary: new FormControl('3000'),
       contract: new FormControl('FullTime'),
       seniority: new FormControl('Junior'),
-      description: new FormControl(''),
+      description: new FormControl('  Text here...'),
       skills: new FormControl(['Example Skill, please Delete!'])
     });
   }

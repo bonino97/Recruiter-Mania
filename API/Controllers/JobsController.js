@@ -1,12 +1,29 @@
 const Job = require('../Models/Job');
 const { PaginatedResults } = require('../Helpers/PaginatedResults');
 
-exports.NewJobOptions = (req,res) => {
-    res.status(200).json({
-        tagLine: 'New Job!',
-        subTagLine: 'Complete the form & post your enterprise offer!',
-        button: false
-    });
+exports.GetJobs = async (req,res) => {
+    try {
+        const page = parseInt(req.query.page);
+        const limit = parseInt(req.query.limit);
+        const jobs = await PaginatedResults(Job, page, limit);
+
+        res.status(200).json(jobs);
+
+    } catch (e) {
+        console.error(e);
+        return res.status(400).json({message: e.message});
+    }
+}
+
+exports.GetJobByUrl = async (req, res, next) => {
+    try {
+        const job = await Job.findOne({Url: req.params.url});
+        if(!job) return next();
+        res.status(200).json(job);
+    } catch (e) {
+        console.error(e);
+        return res.status(400).json({message: e.message})
+    }
 }
 
 exports.NewJob = async (req,res) => {
@@ -21,14 +38,16 @@ exports.NewJob = async (req,res) => {
     }
 }
 
-exports.GetJobs = async (req,res) => {
-    try {
-        const page = parseInt(req.query.page);
-        const limit = parseInt(req.query.limit);
-        const jobs = await PaginatedResults(Job, page, limit);
-
-        res.status(200).json(jobs);
-
+exports.UpdateJob = async (req,res) => {
+    try{
+        const updatedJob = req.body;
+        const job = await Job.findOneAndUpdate(
+            {Url: req.params.url},
+            updatedJob,
+            {new: true, runValidators: true}
+        );
+        
+        return res.status(200).json({job});
     } catch (e) {
         console.error(e);
         return res.status(400).json({message: e.message});

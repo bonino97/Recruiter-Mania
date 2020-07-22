@@ -5,12 +5,14 @@ import { NewJobComponent } from '../../pages/new-job/new-job.component';
 
 
 import { Routes } from '@angular/router';
+import { EditJobComponent } from 'src/app/pages/edit-job/edit-job.component';
 
 
 export const LayoutRoutes: Routes = [
     { path: "", component: JobsListComponent },
     { path: "new-job", component: NewJobComponent },
-    { path: "job/:id", component: JobComponent },
+    { path: "job/:url", component: JobComponent },
+    { path: "job/:url/edit", component: EditJobComponent },
 
     
     { path: "not-found", component: NotFoundComponent }

@@ -6,21 +6,31 @@ const HomeController = require('../Controllers/HomeController');
 const JobsController = require('../Controllers/JobsController');
 
 module.exports = () => {
-    //Home
+    /********************/
+    /*  HomeController  */
+    /********************/
+    
     router.get('/api', HomeController.HomeOptions);
     
-    // Banner Formulario - Nuevo Trabajo
-    // router.get('/api/job/new', JobsController.NewJobOptions);
-    
+    /********************/
+    /*  JobsController  */
+    /********************/
+    /* GET */
     router.get('/api/jobs', JobsController.GetJobs);
     router.get('/api/job/:url', JobsController.GetJobByUrl);
     
-
+    /* POST */
     // Cargar Nuevo Trabajo o Vacante.
     router.post('/api/job/new', JobsController.NewJob);
 
+    /* PUT */
     //Actualizar Trabajo
     router.put('/api/job/:url', JobsController.UpdateJob)
+    
+    /*******************/
+    /* UsersController */
+    /*******************/
+    
 
     return router;
 }

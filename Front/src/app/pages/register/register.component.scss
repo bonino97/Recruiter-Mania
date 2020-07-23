@@ -1,7 +1,19 @@
 a{
-    color: #e86035;
+    color: #db30c2;
 }
 
 a:hover{
-    color: #c70000;
+    color: #f876f2;
+}
+
+.register-page{
+    background-color: black;
+}
+
+.full-page.pricing-page, .full-page.login-page, .full-page.lock-page, .full-page.register-page{
+    background: linear-gradient(#1e1e24, #1e1e24);
+}
+
+.border {
+    border: 0.1rem solid #e14eca!important;
 }

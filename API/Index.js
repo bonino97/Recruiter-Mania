@@ -8,11 +8,14 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
 require('dotenv').config({path: '.env'});
+
+app.use(expressValidator()); //Express Validator para Sanitizar Entradas
 
 app.use(cors()); //Habilito CORS, no olvidar importar.
 app.use('/', router()); //Rutas

@@ -141,7 +141,6 @@ export class EditJobComponent implements OnInit {
 
             this.formWizard.value.skills.forEach(element => {
               if(element instanceof Object === true){
-                console.log(element.value);
                 this.newSkills.push(element.value);
               }
             });

@@ -1,0 +1,25 @@
+// .border {
+//     border: 0.075rem solid #00bfda !important;
+//     border-radius: 0.2857rem;
+// }
+
+
+
+.border {
+    border: 0.0725rem solid #E14ECA !important;
+    border-radius: 0.2857rem;
+}
+
+.btn-success.btn-simple {
+    color: #E14ECA;
+    border-color: #E14ECA;
+    background: transparent;
+}
+
+.btn-success.btn-simple:hover, .btn-success.btn-simple:focus, .btn-success.btn-simple:active, .btn-success.btn-simple:not(:disabled):not(.disabled):active{
+    color: #f051d8;
+    border-color: #f051d8;
+    background-color: transparent !important;
+    background-image: none !important;
+    box-shadow: none;
+}

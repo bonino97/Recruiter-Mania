@@ -1,5 +1,3 @@
-import { RegisterComponent } from './pages/register/register.component';
-
 
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
@@ -8,6 +6,8 @@ import { Routes, RouterModule } from "@angular/router";
 
 import { LayoutComponent } from './layouts/layout/layout.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 const routes: Routes = [
   {
@@ -32,6 +32,17 @@ const routes: Routes = [
     children: [
       {
         path: "register",
+        loadChildren:
+          "./layouts/layout/layout.module#LayoutModule"
+      }
+    ]
+  },
+  {
+    path: "",
+    component: LoginComponent,
+    children: [
+      {
+        path: "login",
         loadChildren:
           "./layouts/layout/layout.module#LayoutModule"
       }

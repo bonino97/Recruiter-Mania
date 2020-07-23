@@ -16,6 +16,7 @@ import { JobComponent } from './job/job.component';
 import { HeaderComponent } from './../components/header/header.component';
 import { EditJobComponent } from './edit-job/edit-job.component';
 import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { RegisterComponent } from './register/register.component';
     JobComponent,
     HeaderComponent,
     EditJobComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
 ],
   exports: [
     NotFoundComponent,

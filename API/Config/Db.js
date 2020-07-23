@@ -9,3 +9,4 @@ mongoose.connection.on('error', (error) => {
 
 //Importar los Modelos.
 const Job = require('../Models/Job');
+const User = require('../Models/User');

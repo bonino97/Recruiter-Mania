@@ -7,7 +7,7 @@ exports.GetJobs = async (req,res) => {
         const limit = parseInt(req.query.limit);
         const jobs = await PaginatedResults(Job, page, limit);
 
-        res.status(200).json(jobs);
+        return res.status(200).json(jobs);
 
     } catch (e) {
         console.error(e);
@@ -19,7 +19,7 @@ exports.GetJobByUrl = async (req, res, next) => {
     try {
         const job = await Job.findOne({Url: req.params.url});
         if(!job) return next();
-        res.status(200).json(job);
+        return res.status(200).json(job);
     } catch (e) {
         console.error(e);
         return res.status(400).json({message: e.message})

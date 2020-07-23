@@ -1,4 +1,4 @@
-
+import { RegisterComponent } from './pages/register/register.component';
 
 
 import { NgModule } from "@angular/core";
@@ -21,6 +21,17 @@ const routes: Routes = [
     children: [
       {
         path: "jobs",
+        loadChildren:
+          "./layouts/layout/layout.module#LayoutModule"
+      }
+    ]
+  },
+  {
+    path: "",
+    component: RegisterComponent,
+    children: [
+      {
+        path: "register",
         loadChildren:
           "./layouts/layout/layout.module#LayoutModule"
       }

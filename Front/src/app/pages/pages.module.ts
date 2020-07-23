@@ -1,6 +1,4 @@
 
-
-
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
@@ -17,6 +15,7 @@ import { JobComponent } from './job/job.component';
 
 import { HeaderComponent } from './../components/header/header.component';
 import { EditJobComponent } from './edit-job/edit-job.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   imports: [
@@ -35,7 +34,8 @@ import { EditJobComponent } from './edit-job/edit-job.component';
     JobsListComponent,
     JobComponent,
     HeaderComponent,
-    EditJobComponent
+    EditJobComponent,
+    RegisterComponent
 ],
   exports: [
     NotFoundComponent,

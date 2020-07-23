@@ -1,3 +1,4 @@
+import { User } from './../models/user.model';
 import { Job } from './../models/job.model';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
@@ -45,5 +46,11 @@ export class LayoutService {
     return this.http.put(`${environment.url}/job/${job.Url}`, params, {headers: headers});
   }
 
+  Register(user: User){
+    let params = JSON.stringify(user);
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+    
+    return this.http.post(`${environment.url}/register`, params, {headers: headers});
+  }
 
 }

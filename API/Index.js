@@ -10,6 +10,9 @@ const MongoStore = require('connect-mongo')(session);
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 
+const passport = require('passport');
+require('./Config/Passport');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
@@ -17,8 +20,11 @@ require('dotenv').config({path: '.env'});
 
 app.use(expressValidator()); //Express Validator para Sanitizar Entradas
 
-app.use(cors()); //Habilito CORS, no olvidar importar.
-app.use('/', router()); //Rutas
+app.use(cors({
+    origin: ['http://localhost:4201', 'http://127.0.0.1:4201'],
+    credentials: true
+})); //Habilito CORS, no olvidar importar.
+
 app.use(cookieParser());
 app.use(session({
     url: process.env.DB,
@@ -26,7 +32,21 @@ app.use(session({
     key: process.env.KEY,
     resave: false,
     saveUninitialized: false,
-    // store: new MongoStore({ mongooseConection: mongoose.connection })
+    cookie:{
+        maxAge: 36000000,
+        secure: false,
+        httpOnly: false
+    },
+    store: new MongoStore({ 
+        url: process.env.DB, 
+        collection: 'sessions'
+    })
 })); //Almaceno la Session
+
+//Inicializar passport 
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use('/', router()); //Rutas
 
 app.listen(process.env.PORT);

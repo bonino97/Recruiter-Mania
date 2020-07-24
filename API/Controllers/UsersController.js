@@ -25,3 +25,11 @@ exports.Register = async (req,res,next) => {
         });
     }
 }
+
+exports.Logged = async (req,res,next) => {
+    console.log(req.body);
+    return res.status(200).json({
+        success: true,
+        msg: 'Logging...'
+    })
+}

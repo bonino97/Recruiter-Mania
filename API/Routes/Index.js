@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-
 //Default API Url
 const apiUrl = '/api'
 
@@ -10,6 +9,7 @@ const HomeController = require('../Controllers/HomeController');
 const JobsController = require('../Controllers/JobsController');
 const UsersController = require('../Controllers/UsersController');
 const ValidationsController = require('../Controllers/ValidationsController');
+const AuthController = require('../Controllers/AuthController');
 
 module.exports = () => {
     /********************/
@@ -17,6 +17,7 @@ module.exports = () => {
     /********************/
     
     router.get(apiUrl, HomeController.HomeOptions);
+    router.get(`${apiUrl}/panel`, HomeController.PanelOptions);
     
     /********************/
     /*  JobsController  */
@@ -27,11 +28,11 @@ module.exports = () => {
     
     /* POST */
     // Cargar Nuevo Trabajo o Vacante.
-    router.post(`${apiUrl}/job/new`, JobsController.NewJob);
+    router.post(`${apiUrl}/job/new`, AuthController.VerifyUser, JobsController.NewJob);
 
     /* PUT */
     //Actualizar Trabajo
-    router.put(`${apiUrl}/job/:url`, JobsController.UpdateJob);
+    router.put(`${apiUrl}/job/:url`, AuthController.VerifyUser, JobsController.UpdateJob);
     
     /*******************/
     /* UsersController */
@@ -39,6 +40,11 @@ module.exports = () => {
 
     router.post(`${apiUrl}/register`, ValidationsController.SanitizeRegisterData, UsersController.Register);
     
+    /*******************/
+    /* AuthController  */
+    /*******************/
+
+    router.post(`${apiUrl}/login`, AuthController.AuthenticateUser, UsersController.Logged);
 
     return router;
 }

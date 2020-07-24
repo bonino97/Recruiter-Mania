@@ -35,9 +35,16 @@ UserSchema.pre('save', async function (next) {
     next();
 });
 
-UserSchema.post('save', function (error, doc, next) {
+// UserSchema.post('save', function (error, doc, next) {
 
-})
+// });
+
+//Autenticar Usuarios
+UserSchema.methods = {
+    ComparePassword: function(Password){
+        return bcrypt.compareSync(Password, this.Password);
+    }
+}
 
 
 module.exports = mongoose.model('User', UserSchema);

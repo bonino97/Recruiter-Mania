@@ -86,7 +86,6 @@ export class EditJobComponent implements OnInit {
           skills: this.job.Skills
         });
         this.oldSkills = data.Skills;
-        console.log(this.oldSkills);
       }, (error: any) => {
         console.error(error);
       });

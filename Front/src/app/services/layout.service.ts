@@ -20,6 +20,10 @@ export class LayoutService {
     return this.http.get(environment.url);
   }
 
+  GetPanelOptions():Observable<any> {
+    return this.http.get(`${environment.url}/panel`);
+  }
+
   GetJobs(page, limit): Observable<any> {
     return this.http.get(`${environment.url}/jobs?page=${page}&limit=${limit}`);
   }
@@ -36,14 +40,20 @@ export class LayoutService {
     let params = JSON.stringify(job);
     let headers = new HttpHeaders().set('Content-Type','application/json');
     
-    return this.http.post(`${environment.url}/job/new`, params, {headers: headers});
+    return this.http.post(`${environment.url}/job/new`, params, {
+      withCredentials: true,
+      headers: headers
+    });
   }
 
   UpdateJob(job:Job):Observable<any>{
     let params = JSON.stringify(job);
     let headers = new HttpHeaders().set('Content-Type','application/json');
     
-    return this.http.put(`${environment.url}/job/${job.Url}`, params, {headers: headers});
+    return this.http.put(`${environment.url}/job/${job.Url}`, params, {
+      withCredentials: true,
+      headers: headers
+    });
   }
 
   Register(user: User){
@@ -51,6 +61,16 @@ export class LayoutService {
     let headers = new HttpHeaders().set('Content-Type','application/json');
     
     return this.http.post(`${environment.url}/register`, params, {headers: headers});
+  }
+
+  Login(user: any){
+    let params = JSON.stringify(user);
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+    
+    return this.http.post(`${environment.url}/login`, params, {
+      withCredentials: true,
+      headers: headers
+    });
   }
 
 }

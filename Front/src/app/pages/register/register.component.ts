@@ -4,6 +4,7 @@ import { MustMatch } from "./password-validator.component";
 import { LayoutService } from 'src/app/services/layout.service';
 import { User } from 'src/app/models/user.model';
 import swal from "sweetalert2";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -27,6 +28,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   constructor(
     public formBuilder: FormBuilder,
+    public router: Router,
     private _LayoutService: LayoutService
   ) {}
 
@@ -59,7 +61,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   onSubmit(){
     if(this.registerForm.invalid) return;
-    const user = new User(this.registerForm.value.fullName, this.registerForm.value.email, this.registerForm.value.password);
+    const user = new User(this.registerForm.value.email, this.registerForm.value.password, this.registerForm.value.fullName);
     this._LayoutService.Register(user).subscribe(
       (data:any) => {
 
@@ -70,9 +72,13 @@ export class RegisterComponent implements OnInit, OnDestroy {
             confirmButtonClass: "btn btn-danger btn-simple",
             background: '#ffffff'
           });
+          
+          this.router.navigate([`/login`]);
+
         }
 
       }, (error: any) => {
+        console.error(error);
         if(!!error.error.msg){
           swal.fire({
             html: `<span style='color:grey'> ${error.error.msg} <span>`,

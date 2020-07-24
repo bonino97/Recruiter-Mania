@@ -128,13 +128,14 @@ export class NewJobComponent implements OnInit {
                 this.router.navigate([`/jobs/`]);
               });
           }, (error: any) => {
+            
             swal.fire({
               type: 'error',
-              html: "<span style='color:grey'> Sorry, something broke here, please try again later... <span>",
+              html: `<span style='color:grey'> ${error.error.msg} <span>`,
               timer: 2000,
               showConfirmButton: false
             }).then( () => {
-              this.router.navigate([`/jobs/`]);
+              this.router.navigate([`/login`]);
             });
           });
 
@@ -142,7 +143,7 @@ export class NewJobComponent implements OnInit {
         }
       } else {
         swal.fire({
-          html: "<span style='color:grey'> Hey, put at least one Skill/Knowledge required for the job. <span>",
+          html: "<span style='color:grey'> Hey, put at least one Knowledge required for Job. <span>",
           buttonsStyling: false,
           confirmButtonClass: "btn btn-danger btn-simple",
           background: '#ffffff'

@@ -15,6 +15,7 @@ import { JwBootstrapSwitchNg2Module } from "jw-bootstrap-switch-ng2";
 
 import { FooterComponent } from "./footer/footer.component";
 import { NavbarComponent } from "./navbar/navbar.component";
+// import { AuthNavbarComponent } from './auth-navbar/auth-navbar.component';
 // import { HeaderComponent } from './header/header.component';
 
 //Movemos el Modulo Header para poder parametrizarlo, quizas no sea la mejor practica, pero es una buena solucion a la UI
@@ -35,6 +36,7 @@ import { NavbarComponent } from "./navbar/navbar.component";
     declarations: [
       FooterComponent,
       NavbarComponent,
+      // AuthNavbarComponent,
       // HeaderComponent
     ],
     exports: [

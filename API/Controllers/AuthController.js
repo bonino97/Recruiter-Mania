@@ -11,7 +11,7 @@ exports.AuthenticateUser = async (req,res,next) => {
             return res.status(200).json({
                 success: true,
                 lemonCookie: res.req.headers.cookie.split('=')[1],
-                msg: 'Logging...'
+                msg: 'Redirecting...'
             });
         });
     })(req, res, next);

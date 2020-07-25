@@ -49,6 +49,9 @@ export class LayoutComponent implements OnInit {
       for (let i = 0; i < tables.length; i++) {
         ps = new PerfectScrollbar(tables[i]);
       }
+
+      
+
     }
     
     // if(this.openJobsListTable){

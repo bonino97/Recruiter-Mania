@@ -1,3 +1,4 @@
+import { EditProfileComponent } from './../../pages/edit-profile/edit-profile.component';
 import { AuthGuard } from './../../guards/auth.guard';
 import { AdminPanelComponent } from './../../pages/admin-panel/admin-panel.component';
 import { JobsListComponent } from './../../pages/jobs-list/jobs-list.component';
@@ -11,11 +12,15 @@ import { EditJobComponent } from 'src/app/pages/edit-job/edit-job.component';
 
 
 export const LayoutRoutes: Routes = [
-    { path: "", component: JobsListComponent },
-    { path: "new-job", component: NewJobComponent, canActivate : [AuthGuard]},
-    { path: "job/:url", component: JobComponent },
-    { path: "job/:url/edit", component: EditJobComponent, canActivate : [AuthGuard]},
-    { path: "panel", component: AdminPanelComponent , canActivate : [AuthGuard]},
+    /* JOBS ROUTES */
+    { path: "jobs", component: JobsListComponent },
+    { path: "jobs/new-job", component: NewJobComponent, canActivate : [AuthGuard]},
+    { path: "jobs/job/:url", component: JobComponent },
+    { path: "jobs/job/:url/edit", component: EditJobComponent, canActivate : [AuthGuard]},
+    { path: "jobs/panel", component: AdminPanelComponent , canActivate : [AuthGuard]},
+
+    /* USER ROUTES */
+    { path: "profile/edit-profile", component: EditProfileComponent , canActivate : [AuthGuard]},
 
 
     

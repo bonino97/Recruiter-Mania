@@ -11,11 +11,11 @@
             <button type="button" [routerLink]="[newJobPath]" *ngIf="!!jobButton" class="btn btn-success btn-sm btn-simple mr-1 btn-block animated fadeIn slow"><i class=" tim-icons icon-check-2 mb-1"></i>&nbsp;&nbsp;New Job Position</button>
           </div>
           <div class="col-sm-6">
-            <button type="button" [routerLink]="[newJobPath]" *ngIf="!!editButton" class="btn btn-success btn-sm btn-simple mr-1 btn-block animated fadeIn slow"><i class=" tim-icons icon-check-2 mb-1"></i>&nbsp;&nbsp;Edit Profile</button>
+            <button type="button" [routerLink]="[editProfilePath]" *ngIf="!!editButton" class="btn btn-success btn-sm btn-simple mr-1 btn-block animated fadeIn slow"><i class=" tim-icons icon-single-02 mb-1"></i>&nbsp;&nbsp;Edit Profile</button>
           </div>
         </div>
 
-        <button type="button" *ngIf="!panel" [routerLink]="[newJobPath]" class="btn btn-success btn-sm btn-simple mr-1 btn-block animated fadeIn slow"><i class=" tim-icons icon-check-2 mb-1"></i>&nbsp;&nbsp;New Job Position</button>
+        <button type="button" *ngIf="!panel && !!jobButton" [routerLink]="[newJobPath]" class="btn btn-success btn-sm btn-simple mr-1 btn-block animated fadeIn slow"><i class=" tim-icons icon-check-2 mb-1"></i>&nbsp;&nbsp;New Job Position</button>
         
        
       </div>

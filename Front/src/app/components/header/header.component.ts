@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
   editButton: any;
   panel: any;
   newJobPath = "/jobs/new-job";
+  editProfilePath = "/profile/edit-profile";
 
   @Input() getPath: string;
 

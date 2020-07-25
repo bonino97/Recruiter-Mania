@@ -30,6 +30,7 @@ export class JobsListComponent implements OnInit {
       .subscribe((data:any) => {
 
         this.jobs = data.results;
+        
         this.actualPage = data.actualPage;
 
         for (let index = 1; index <= data.totalPages; index++) {

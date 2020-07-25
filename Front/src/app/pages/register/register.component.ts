@@ -17,11 +17,13 @@ export class RegisterComponent implements OnInit, OnDestroy {
   focus1;
   focus2;
   focus3;
+  focus4;
   
   public focusTouched;
   public focusTouched1;
   public focusTouched2;
   public focusTouched3;
+  public focusTouched4;
 
   public registerForm: FormGroup;
   public register = false;
@@ -38,7 +40,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
     
     this.registerForm = this.formBuilder.group(
       {
-        fullName: ["", [Validators.required]],
+        firstName: ["", [Validators.required]],
+        lastName: ["", [Validators.required]],
         email: ["", [Validators.required, Validators.email]],
         password: ["", [Validators.required, Validators.minLength(6)]],
         repeatPassword: ["", [Validators.required, Validators.minLength(6)]]
@@ -61,7 +64,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   onSubmit(){
     if(this.registerForm.invalid) return;
-    const user = new User(this.registerForm.value.email, this.registerForm.value.password, this.registerForm.value.fullName);
+    const user = new User(this.registerForm.value.email, this.registerForm.value.password, this.registerForm.value.firstName, this.registerForm.value.lastName);
     this._LayoutService.Register(user).subscribe(
       (data:any) => {
 

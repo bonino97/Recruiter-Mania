@@ -1,17 +1,17 @@
 
 <app-header getPath="Home"></app-header>
 
-<div class="row">
+<div *ngIf="!!jobs" class="row ">
     <div class="col-lg-12">        
         <div class="card border">
           <div class=" card-body">
             <div class=" toolbar"></div>
             <div class="dataTables_wrapper py-4">
             <div class=" table-responsive">
-              <table class=" table">
+              <h1 *ngIf="jobs.length == 0" >There are no jobs available, be the first in post one!</h1>
+              <table *ngIf="jobs.length > 0" class=" table">
                 <thead class=" text-primary">
                   <tr>
-                    <th>Enterprise</th>
                     <th>Job Position</th>
                     <th class=" text-center">Seniority</th>
                     <th class=" text-center">Place</th>
@@ -21,11 +21,10 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let job of jobs">
-                    <td>{{job.Enterprise}}</td>
                     <td>{{job.Title}}</td>
                     <td class="text-center">{{job.Seniority}}</td>
                     <td class="text-center">{{job.Place}}</td>
-                    <td class="text-right">{{job.Salary}}</td>
+                    <td class="text-right">$ {{job.Salary}}</td>
                     <td class="text-right">
                       <button (click)="openJob(job)" class=" btn btn-icon btn-round btn-sm btn-simple btn-twitter">
                         <i class="fas fa-info"></i>

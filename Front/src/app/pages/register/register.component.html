@@ -59,16 +59,38 @@
                   </div>
                   <input
                     class=" form-control"
-                    placeholder="Full Name"
+                    placeholder="First Name"
                     type="text"
                     (blur)="focus2 = false"
                     (focus)="focus2 = true"
-                    formControlName="fullName"
-                    [class.is-invalid]="(f.fullName.invalid) && (f.fullName.dirty || f.fullName.touched)"
-                    [class.is-valid]="(!f.fullName.invalid) && (f.fullName.dirty || f.fullName.touched)"
+                    formControlName="firstName"
+                    [class.is-invalid]="(f.firstName.invalid) && (f.firstName.dirty || f.firstName.touched)"
+                    [class.is-valid]="(!f.firstName.invalid) && (f.firstName.dirty || f.firstName.touched)"
                   />
                   <div class="invalid-feedback  animate__animated animate__fadeIn">* This field is required.</div>
                 </div>
+
+                <div
+                class=" input-group"
+                [ngClass]="{ 'input-group-focus': focus4 === true }"
+              >
+                <div class=" input-group-prepend">
+                  <div class=" input-group-text">
+                    <i class=" tim-icons icon-badge"> </i>
+                  </div>
+                </div>
+                <input
+                  class=" form-control"
+                  placeholder="Last Name"
+                  type="text"
+                  (blur)="focus4 = false"
+                  (focus)="focus4 = true"
+                  formControlName="lastName"
+                  [class.is-invalid]="(f.lastName.invalid) && (f.lastName.dirty || f.lastName.touched)"
+                  [class.is-valid]="(!f.lastName.invalid) && (f.lastName.dirty || f.lastName.touched)"
+                />
+                <div class="invalid-feedback  animate__animated animate__fadeIn">* This field is required.</div>
+              </div>
 
                 <div class=" input-group has-label" [ngClass]="{'input-group-focus': focus === true}">
 
@@ -95,7 +117,7 @@
                 <div class=" input-group" [ngClass]="{ 'input-group-focus': focus1 === true }">
                   <div class=" input-group-prepend">
                     <div class=" input-group-text">
-                      <i class=" tim-icons icon-lock-circle"> </i>
+                      <i class=" tim-icons icon-key-25"> </i>
                     </div>
                   </div>
                   <input

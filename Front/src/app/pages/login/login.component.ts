@@ -66,15 +66,23 @@ export class LoginComponent implements OnInit, OnDestroy {
         }
 
       }, (error: any) => {
-        
-        if(error.status === 401){
-          swal.fire({
-            html: `<span style='color:grey'> Incorrect Email or Password...<span>`,
+
+        if(error.error.message.msg){
+          return swal.fire({
+            html: `<span style='color:grey'>${error.error.message.msg}<span>`,
             buttonsStyling: false,
             confirmButtonClass: "btn btn-danger btn-simple",
             background: '#ffffff'
           });
         }
+
+        return swal.fire({
+          type: 'error',
+          html: `<span style='color:grey'> Something wrong, please try later...<span>`,
+          buttonsStyling: false,
+          confirmButtonClass: "btn btn-danger btn-simple",
+          background: '#ffffff'
+        });
       });
   
   }

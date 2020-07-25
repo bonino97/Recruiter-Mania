@@ -125,18 +125,30 @@ export class NewJobComponent implements OnInit {
                 timer: 2000,
                 showConfirmButton: false
               }).then( () => {
-                this.router.navigate([`/jobs/`]);
+                this.router.navigate([`/jobs/panel`]);
               });
           }, (error: any) => {
             
+            if(error.error.msg){
+              swal.fire({
+                type: 'error',
+                html: `<span style='color:grey'> ${error.error.msg} <span>`,
+                timer: 2000,
+                showConfirmButton: false
+              }).then( () => {
+                this.router.navigate([`/login`]);
+              });
+            }
+
             swal.fire({
               type: 'error',
-              html: `<span style='color:grey'> ${error.error.msg} <span>`,
+              html: `<span style='color:grey'> Something wrong, please reload... <span>`,
               timer: 2000,
               showConfirmButton: false
             }).then( () => {
               this.router.navigate([`/login`]);
             });
+
           });
 
 
@@ -190,12 +202,12 @@ export class NewJobComponent implements OnInit {
 
   createJobForm() {
     return new FormGroup({
-      title: new FormControl('React Devleoper',  [Validators.required, Validators.minLength(1)]),
-      enterprise: new FormControl('Facebook'),
-      place: new FormControl('Remote', [Validators.required, Validators.minLength(1)]),
-      salary: new FormControl('3000'),
-      contract: new FormControl('FullTime'),
-      seniority: new FormControl('Junior'),
+      title: new FormControl('',  [Validators.required, Validators.minLength(1)]),
+      enterprise: new FormControl(''),
+      place: new FormControl('', [Validators.required, Validators.minLength(1)]),
+      salary: new FormControl(''),
+      contract: new FormControl(''),
+      seniority: new FormControl(''),
       description: new FormControl('  Text here...'),
       skills: new FormControl(['Example Skill, please Delete!'])
     });

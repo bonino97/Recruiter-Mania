@@ -2,6 +2,7 @@ import { Job } from './../../models/job.model';
 import { Router } from '@angular/router';
 import { LayoutService } from '../../services/layout.service';
 import { Component, OnInit } from '@angular/core';
+import swal from "sweetalert2";
 
 @Component({
   selector: 'app-user-jobs',
@@ -16,17 +17,23 @@ export class UserJobsComponent implements OnInit {
     ) {}
 
   jobs: Job[];
+  user;
   actualPage;
   previousPage;
   nextPage;
   totalPages: Number[] = [];
   limit = 5;
+  candidates = 11;
 
   disablePreviousButton: boolean = false;
   disableNextButton: boolean = false;
 
   ngOnInit() {
-    this._LayoutService.GetJobsByUserId(1,this.limit)
+    this._LayoutService.GetUserInstance()
+    .subscribe((data:any) => {
+      this.user = data.data;
+
+      this._LayoutService.GetJobsByUserId(1,this.limit)
       .subscribe((data:any) => {
         this.jobs = data.jobs.results;
         this.actualPage = data.jobs.actualPage;
@@ -49,6 +56,19 @@ export class UserJobsComponent implements OnInit {
           this.disableNextButton = true;
         };
       })
+      
+    }, (error: any) => {
+      if(error.status === 401){
+        swal.fire({
+          html: `<span style='color:grey'> ${error.error.msg} <span>`,
+          buttonsStyling: false,
+          confirmButtonClass: "btn btn-danger btn-simple",
+          background: '#ffffff'
+        });
+        this.router.navigate([`/login`]);
+      }
+    });
+
   }
 
 
@@ -125,8 +145,11 @@ export class UserJobsComponent implements OnInit {
     });
   }
 
-  openJob(job: Job){
-    const jobUrl = `/jobs/job/${job.Url}`;
-    this.router.navigate([jobUrl]);
+  editJob(job){
+    this.router.navigate([`/jobs/job/${job.Url}/edit`]);
+  }
+
+  removeJob(job){
+    console.log(job);
   }
 }

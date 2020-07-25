@@ -24,6 +24,7 @@
     "@fullcalendar/interaction": "4.3.0",
     "@swimlane/ngx-datatable": "16.0.2",
     "angular2-multiselect-dropdown": "4.6.3",
+    "animate.css": "^4.1.0",
     "bs-stepper": "1.7.0",
     "chart.js": "2.8.0",
     "core-js": "3.6.4",

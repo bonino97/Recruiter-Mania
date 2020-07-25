@@ -18,6 +18,7 @@ const routes: Routes = [
   {
     path: "",
     component: LayoutComponent,
+    data: { animation: 'isRight' },
     children: [
       {
         path: "",
@@ -29,6 +30,7 @@ const routes: Routes = [
   {
     path: "",
     component: RegisterComponent,
+    data: { animation: 'isRight' },
     children: [
       {
         path: "register",
@@ -40,6 +42,7 @@ const routes: Routes = [
   {
     path: "",
     component: LoginComponent,
+    data: { animation: 'isRight' },
     children: [
       {
         path: "login",

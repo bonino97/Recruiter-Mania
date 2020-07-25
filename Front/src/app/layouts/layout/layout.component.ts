@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener } from "@angular/core";
 import { Router } from "@angular/router";
 import PerfectScrollbar from "perfect-scrollbar";
 import { ToastrService } from "ngx-toastr";
+import { slider } from '../../route-animations';
 
 //Services
 import { LayoutService } from './../../services/layout.service';
@@ -16,7 +17,10 @@ var misc: any = {
 @Component({
   selector: "app-layout",
   templateUrl: "./layout.component.html",
-  styleUrls: ["./layout.component.scss"]
+  styleUrls: ["./layout.component.scss"],
+  animations: [
+    slider
+  ]
 })
 export class LayoutComponent implements OnInit {
 

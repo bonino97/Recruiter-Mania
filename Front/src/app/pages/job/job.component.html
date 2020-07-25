@@ -1,10 +1,15 @@
 <!-- <div class=" content"> -->
     <div class=" header text-center" *ngIf="!!job"><h3 class=" title">Job Description</h3></div>
-    <div class=" row">
+    <div class=" row animate__animated animate__fadeIn">
+      
       <div class=" col-md-9 ml-auto mr-auto">
+        
         <div class=" card card-user border-blockcolor">
+          
           <div class=" card-body">
+
             <p class=" card-text"></p>
+
             <div class=" author">
               <div class=" block block-one"></div>
               <div class=" block block-two"></div>
@@ -12,8 +17,11 @@
               <div class=" block block-four"></div>
 
             <h1 class="display-4">{{job.Title}}</h1><button class="btn btn-primary btn-sm btn-simple" (click)="editJob(job)">Edit</button>
+            
             </div>
+
             <div class="card-description">
+
               <div class="row">
 
                 <div class="col-sm-4 ml-auto mr-auto">
@@ -32,6 +40,7 @@
                 </div>
 
               </div>
+
             </div>
             
             <div *ngIf="!!job.Description" class="col-md-6 mt-3 ml-auto mr-auto">
@@ -42,21 +51,45 @@
           </div>
           
           <div class=" card-footer">
+
             <div class=" button-container">
               
-              <div class="col-md-4 mb-3 ml-auto mr-auto">
-                
-                <div class=" col-md-1 col-sm-1">
-                  <button class="btn btn-icon btn-simple btn-linkedin">
-                    <i class=" fab fa-linkedin"> </i>
-                  </button>
+              <div class="row">
+
+                <div class="col-md-4">
+                  
                 </div>
+
+                <div class="col-md-4 mb-3 ml-auto mr-auto">
+                
+                  <div class=" col-md-1 col-sm-1">
+
+                    <button class="btn btn-icon btn-simple btn-linkedin">
+                      <i class=" fab fa-linkedin"> </i>
+                    </button>
+
+                  </div>
+  
+                </div>
+
+                <div class="col-md-4 mt-3 justify-content-end">
+
+                  <button [routerLink]="['/jobs']" routerLinkActive="router-link-active"  class="btn btn-primary btn-sm float-right"> <strong><i class="tim-icons icon-double-left"> </i></strong> Back</button>
+  
+                </div>
+
               </div>
 
+              
+
             </div>
+
           </div>
+
         </div>
+        
       </div>
+
     </div>
   <!-- </div> -->
   

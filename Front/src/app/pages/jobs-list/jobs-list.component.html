@@ -1,7 +1,7 @@
 
 <app-header getPath="Home"></app-header>
 
-<div *ngIf="!!jobs" class="row ">
+<div *ngIf="!!jobs" class="row animate__animated animate__fadeIn">
     <div class="col-lg-12">        
         <div class="card border">
           <div class=" card-body">
@@ -21,7 +21,7 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let job of jobs">
-                    <td>{{job.Title}}</td>
+                    <td>  <a href="javascript:void(0)" (click)="openJob(job)" >{{job.Title}}</a></td>
                     <td class="text-center">{{job.Seniority}}</td>
                     <td class="text-center">{{job.Place}}</td>
                     <td class="text-right">$ {{job.Salary}}</td>

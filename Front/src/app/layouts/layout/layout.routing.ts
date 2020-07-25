@@ -13,14 +13,14 @@ import { EditJobComponent } from 'src/app/pages/edit-job/edit-job.component';
 
 export const LayoutRoutes: Routes = [
     /* JOBS ROUTES */
-    { path: "jobs", component: JobsListComponent },
-    { path: "jobs/new-job", component: NewJobComponent, canActivate : [AuthGuard]},
-    { path: "jobs/job/:url", component: JobComponent },
-    { path: "jobs/job/:url/edit", component: EditJobComponent, canActivate : [AuthGuard]},
-    { path: "jobs/panel", component: AdminPanelComponent , canActivate : [AuthGuard]},
+    { path: "jobs", component: JobsListComponent, data: { animation: 'isRight' }},
+    { path: "jobs/new-job", component: NewJobComponent, canActivate : [AuthGuard], data: { animation: 'isRight' }},
+    { path: "jobs/job/:url", component: JobComponent, data: { animation: 'isRight' }},
+    { path: "jobs/job/:url/edit", component: EditJobComponent, canActivate : [AuthGuard], data: { animation: 'isRight' }},
+    { path: "jobs/panel", component: AdminPanelComponent , canActivate : [AuthGuard], data: { animation: 'isRight' }},
 
     /* USER ROUTES */
-    { path: "profile/edit-profile", component: EditProfileComponent , canActivate : [AuthGuard]},
+    { path: "profile/edit-profile", component: EditProfileComponent , canActivate : [AuthGuard], data: { animation: 'isRight' }},
 
 
     

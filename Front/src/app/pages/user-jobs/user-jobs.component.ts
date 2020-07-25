@@ -152,4 +152,9 @@ export class UserJobsComponent implements OnInit {
   removeJob(job){
     console.log(job);
   }
+
+  openJob(job: Job){
+    const jobUrl = `/jobs/job/${job.Url}`;
+    this.router.navigate([jobUrl]);
+  }
 }

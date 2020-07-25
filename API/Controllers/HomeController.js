@@ -5,7 +5,7 @@ exports.HomeOptions = async (req, res, next) => { //Mostrar Trabajos en el Curso
     res.status(200).json({
         tagLine: 'Find, Share & Post your Job position!',
         bar: true,
-        postJobButton: true,
+        postJobButton: false,
         home: true
     });
 }

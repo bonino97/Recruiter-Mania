@@ -1,5 +1,5 @@
 const Job = require('../Models/Job');
-const { PaginatedResults } = require('../Helpers/PaginatedResults');
+const { PaginatedResults, PaginatedResultsById } = require('../Helpers/PaginatedResults');
 
 exports.GetJobs = async (req,res) => {
     try {
@@ -28,8 +28,8 @@ exports.GetJobByUrl = async (req, res, next) => {
 
 exports.NewJob = async (req,res) => {
     try{
-        console.log(req.body);
         const job = new Job(req.body);  
+        job.User = req.user._id;
         const jobInstance = await job.save();
         return res.status(200).json({jobInstance});
     } catch (e) {
@@ -48,6 +48,26 @@ exports.UpdateJob = async (req,res) => {
         );
         
         return res.status(200).json({job});
+    } catch (e) {
+        console.error(e);
+        return res.status(400).json({message: e.message});
+    }
+}
+
+exports.GetJobsByUserId = async (req,res) => {
+    try{
+        const page = parseInt(req.query.page);
+        const limit = parseInt(req.query.limit);
+        if(req.user._id === undefined){
+            return res.status(400).json({
+                success: false,
+                msg: 'Session expired, please login again...'
+            });
+        }
+        const queryFilter = {User: req.user._id};
+        const jobs = await PaginatedResultsById(Job, queryFilter, page, limit);
+        return res.status(200).json({jobs});
+
     } catch (e) {
         console.error(e);
         return res.status(400).json({message: e.message});

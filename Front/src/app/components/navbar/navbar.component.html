@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-absolute " [ngClass]="{'bg-white': isCollapsed === false, 'navbar-transparent': isCollapsed === true}">
   <div class="container-fluid ">
     <div class=" navbar-wrapper">
-      <h3 class="text-primary"> <b>Lemon-Jobs</b> </h3>
+      <h3 class="text-primary"> <b> <a class="a-title" [routerLink]="['/jobs']" routerLinkActive="router-link-active" >Recruiter-Mania</a></b> </h3>
     </div>
     <button
       aria-label="Toggle navigation"
@@ -21,7 +21,7 @@
       id="navigation"
     >
       <ul class=" navbar-nav ml-auto">
-        <li class=" search-bar input-group" *ngIf="barOption">
+        <li class=" search-bar input-group">
           <button
             class=" btn btn-link"
             data-target="#searchModal"
@@ -87,7 +87,7 @@
               <img alt="Profile Photo" src="assets/img/mike.jpg" />
             </div>
             <b class=" caret d-none d-lg-block d-xl-block"> </b>
-            <p class=" d-lg-none">Log out</p>
+            <p class=" d-lg-none">Settings</p>
           </a>
           <ul
             class=" dropdown-menu dropdown-navbar dropdown-menu-right"
@@ -99,8 +99,8 @@
               </a>
             </li>
             <li class=" nav-link">
-              <a class=" nav-item dropdown-item" href="javascript:void(0)">
-                Settings
+              <a class=" nav-item dropdown-item" [routerLink]="['/jobs/panel']" routerLinkActive="router-link-active" >
+                Admin Panel
               </a>
             </li>
             <li class=" dropdown-divider"></li>

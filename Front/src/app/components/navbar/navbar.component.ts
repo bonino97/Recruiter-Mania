@@ -32,11 +32,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   
   ngOnInit() {
     const navbar: HTMLElement = this.element.nativeElement;
-
-    this._LayoutService.GetPageOptions()
-      .subscribe((data:any) => {
-        this.barOption = data.bar; //Habilita/Deshabilita Buscador
-    });
   }
 
   ngOnDestroy() {

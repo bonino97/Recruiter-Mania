@@ -25,6 +25,7 @@ module.exports = () => {
     /* GET */
     router.get(`${apiUrl}/jobs`, JobsController.GetJobs);
     router.get(`${apiUrl}/job/:url`, JobsController.GetJobByUrl);
+    router.get(`${apiUrl}/my-jobs`, JobsController.GetJobsByUserId);
     
     /* POST */
     // Cargar Nuevo Trabajo o Vacante.
@@ -44,7 +45,7 @@ module.exports = () => {
     /* AuthController  */
     /*******************/
 
-    router.post(`${apiUrl}/login`, AuthController.AuthenticateUser, UsersController.Logged);
+    router.post(`${apiUrl}/login`, AuthController.AuthenticateUser);
 
     return router;
 }

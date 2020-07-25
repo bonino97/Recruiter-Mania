@@ -54,19 +54,19 @@ export class LoginComponent implements OnInit, OnDestroy {
     this._LayoutService.Login(user).subscribe(
       (data:any) => {
         if(data.success) {
-          this._AuthService.SetUserInfo({'user' : data['user']});
+          this._AuthService.SetUserInfo(data.lemonCookie);
           swal.fire({
             html: `<span style='color:grey'> ${data.msg} <span>`,
             buttonsStyling: false,
             showConfirmButton: false,
             background: '#ffffff',
-            timer: 1500
+            timer: 1250
           });
           this.router.navigate([`/jobs/panel`]);
         }
 
       }, (error: any) => {
-        console.error(error);
+        
         if(error.status === 401){
           swal.fire({
             html: `<span style='color:grey'> Incorrect Email or Password...<span>`,

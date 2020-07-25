@@ -41,6 +41,10 @@ module.exports = () => {
 
     router.post(`${apiUrl}/register`, ValidationsController.SanitizeRegisterData, UsersController.Register);
     
+    router.get(`${apiUrl}/me`, AuthController.VerifyUser, UsersController.GetMyInstance);
+
+    router.put(`${apiUrl}/me`, AuthController.VerifyUser, UsersController.UpdateProfile);
+
     /*******************/
     /* AuthController  */
     /*******************/

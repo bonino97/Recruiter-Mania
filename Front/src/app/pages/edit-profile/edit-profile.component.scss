@@ -1,0 +1,16 @@
+.border {
+    border: 0.0825rem solid #E14ECE !important;
+}
+
+.invalid-feedback {
+    color: #E41C00;
+}
+
+.was-validated .form-control:invalid, .form-control.is-invalid{
+  border-color: #E41C00;
+}
+
+.form-group:not(.has-danger):not(.has-success) .form-control:focus, .form-group:not(.has-danger):not(.has-success) .input-group-append .input-group-text, .form-group:not(.has-danger):not(.has-success) .input-group-prepend .input-group-text, .input-group-focus:not(.has-danger):not(.has-success) .form-control:focus, .input-group-focus:not(.has-danger):not(.has-success) .input-group-append .input-group-text, .input-group-focus:not(.has-danger):not(.has-success) .input-group-prepend .input-group-text {
+  border-color: #E14ECE;
+}
+

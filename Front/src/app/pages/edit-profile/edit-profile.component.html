@@ -1,0 +1,239 @@
+<div class=" content">
+    <div class=" row" *ngIf="!!user">
+      <div class=" col-md-8">
+
+        <div class=" card border">
+
+          <div class=" card-header"><h5 class=" title">Edit Profile</h5></div>
+
+          <div class=" card-body">
+            <form [formGroup]="editProfileForm" (ngSubmit)="onSubmit()">
+
+
+              <div class=" row">
+                <div class=" col-md-6 pr-md-1">
+                  <div class=" form-group">
+                    <label> First Name </label>
+                    <input class=" form-control" 
+                    formControlName="FirstName" 
+                    type="text"
+                    [class.is-invalid]="(f.FirstName.invalid) && (f.FirstName.dirty || f.FirstName.touched)"
+                    [class.is-valid]="(!f.FirstName.invalid) && (f.FirstName.dirty || f.FirstName.touched)"
+                    />
+                    <div class="invalid-feedback  animate__animated animate__fadeIn">* This field is required.</div>
+                  </div>
+                </div>
+                <div class=" col-md-6 pl-md-1">
+                  <div class=" form-group">
+                    <label> Last Name </label>
+                    <input
+                    class=" form-control"
+                    formControlName="LastName"
+                    type="text"                    
+                    [class.is-invalid]="(f.LastName.invalid) && (f.LastName.dirty || f.LastName.touched)"
+                    [class.is-valid]="(!f.LastName.invalid) && (f.LastName.dirty || f.LastName.touched)"/>
+                    <div class="invalid-feedback  animate__animated animate__fadeIn">* This field is required.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class=" row">
+                <div class=" col-md-6 pr-md-1">
+                  <div class=" form-group">
+                    <label> Email </label>
+                    <input class=" form-control" 
+                    formControlName="Email" 
+                    type="text"
+                    
+                    [class.is-invalid]="(f.Email.invalid) && (f.Email.dirty || f.Email.touched)"
+                    [class.is-valid]="(!f.Email.invalid) && (f.Email.dirty || f.Email.touched)"
+                    />
+                    <div class="invalid-feedback  animate__animated animate__fadeIn">* Please enter a valid email address.</div>
+                  </div>
+                </div>
+                <div class=" col-md-6 pl-md-1">
+                  <div class=" form-group">
+                    <label> Profile Url </label>
+                    <input class=" form-control"
+                    formControlName="ProfileUrl"
+                    type="text"
+                    [class.is-invalid]="(f.ProfileUrl.invalid) && (f.ProfileUrl.dirty || f.ProfileUrl.touched)"
+                    [class.is-valid]="(!f.ProfileUrl.invalid) && (f.ProfileUrl.dirty || f.ProfileUrl.touched)"
+                    />
+                    <div class="invalid-feedback  animate__animated animate__fadeIn">* This field is required.</div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class=" row">
+                <div class=" col-md-4 pr-md-1">
+                  <div class=" form-group">
+                    <label> Enterprise </label>
+                    <input class=" form-control" type="text" formControlName="Enterprise" placeholder="Enterprise" />
+                  </div>
+                </div>
+                <div class=" col-md-4 px-md-1">
+                  <div class=" form-group">
+                    <label> Role </label>
+                    <input class=" form-control" type="text" formControlName="EnterpriseRole" placeholder="Enterprise Role" />
+                  </div>
+                </div>
+                <div class=" col-md-4 pl-md-1">
+                  <div class=" form-group">
+                    <label> Country </label>
+                    <input
+                      class=" form-control"
+                      placeholder="Country"
+                      type="text"
+                      formControlName="Country"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class=" row">
+                <div class=" col-md-3 pr-md-1">
+                  <div class=" form-group">
+                    <label> Facebook </label>
+                    <input class=" form-control" formControlName="FacebookUrl" type="text"  placeholder="Enterprise" />
+                  </div>
+                </div>
+                <div class=" col-md-3 pr-md-1">
+                    <div class=" form-group">
+                      <label> Twitter </label>
+                      <input class=" form-control" type="text" formControlName="TwitterUrl" placeholder="Enterprise" />
+                    </div>
+                  </div>
+                <div class=" col-md-3 px-md-1">
+                  <div class=" form-group">
+                    <label> Linkedin </label>
+                    <input
+                      class=" form-control"
+                      placeholder="Country"
+                      type="text"
+                      formControlName="LinkedinUrl"
+                    />
+                  </div>
+                </div>
+                <div class=" col-md-3 pl-md-1">
+                  <div class=" form-group">
+                    <label> Your Website </label>
+                    <input class=" form-control" type="text" formControlName="Website"  placeholder="Website" />
+                  </div>
+                </div>
+              </div>
+
+              <div class=" row">
+                <div class=" col-md-12">
+                  <div class=" form-group">
+                    <label> About Me </label>
+                    <textarea class=" form-control" cols="80" rows="4" formControlName="AboutMe">
+                    
+                    </textarea>
+                  </div>
+                </div>
+              </div>
+
+              <div class=" card-footer ">
+
+                <div class="row ">
+                    <div class="col-md-3">
+                      <button 
+                        class=" btn btn-primary animation-on-hover"
+                        type="submit"
+                        [disabled]="editProfileForm.invalid">
+                            Save
+                      </button>
+                    </div>
+                    <div class="col-md-3 ml-auto">
+                      <button 
+                        class=" btn btn-primary btn-simple animation-on-hover "
+                        type="button"
+                        [routerLink]="['/jobs/panel']" routerLinkActive="router-link-active" 
+                        >
+                        Back
+                      </button>
+                    </div>
+                </div>
+              
+            </div>
+
+            </form>
+          </div>
+
+
+
+        </div>
+      </div>
+      <div class=" col-md-4">
+        <div class=" card card-user">
+          <div class=" card-body">
+            <p class=" card-text"></p>
+            <div class=" author align-left">
+              <div class=" block block-one"></div>
+              <div class=" block block-two"></div>
+              <div class=" block block-three"></div>
+              <div class=" block block-four"></div>
+              <a href="javascript:void(0)">
+                <img
+                  alt="..."
+                  class=" avatar"
+                  src="assets/img/emilyz.jpg"
+                />
+  
+                <h4 class=" title">{{user.FirstName}} {{user.LastName}} </h4>
+              </a>
+              <p class=" description" *ngIf="!!user.Enterprise" > {{user.Enterprise}}</p>
+              <p class=" description" *ngIf="!!user.EnterpriseRole" > {{user.EnterpriseRole}}</p>
+              <p class=" description" *ngIf="!!user.Country" >{{user.Country}}</p>
+            </div>
+            <div class=" card-description">
+              {{user.AboutMe}}
+            </div>
+          </div>
+          <div class=" card-footer">
+            <div class=" button-container">
+
+              <div class="row">
+
+                <div class="col-sm-12">
+
+                  <button
+                  class=" btn btn-icon btn-round btn-facebook mr-1"
+                  (click)="facebookRedirect()" 
+                  >
+                  <i class=" fab fa-facebook"> </i>
+                  </button>
+                  <button
+                  class=" btn btn-icon btn-round btn-twitter mr-1"
+                  (click)="twitterRedirect()" 
+                  >
+                  <i class=" fab fa-twitter"> </i>
+                  </button>
+                  <button
+                  class=" btn btn-icon btn-round btn-linkedin"
+                  (click)="linkedinRedirect()" 
+                  >
+                  <i class=" fab fa-linkedin"> </i>
+                  </button>
+
+                </div>
+                <div class="col-sm-12 text-center mt-3">
+                  <h5>
+
+                    <a target="_blank" href="{{user.Website}}">
+                      {{user.Website}}
+                    </a>
+                    
+                  </h5>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

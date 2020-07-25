@@ -58,12 +58,7 @@ exports.GetJobsByUserId = async (req,res) => {
     try{
         const page = parseInt(req.query.page);
         const limit = parseInt(req.query.limit);
-        if(req.user._id === undefined){
-            return res.status(400).json({
-                success: false,
-                msg: 'Session expired, please login again...'
-            });
-        }
+        
         const queryFilter = {User: req.user._id};
         const jobs = await PaginatedResultsById(Job, queryFilter, page, limit);
         return res.status(200).json({jobs});

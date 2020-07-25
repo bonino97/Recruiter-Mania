@@ -28,6 +28,14 @@ export class LayoutService {
     return this.http.get(`${environment.url}/jobs?page=${page}&limit=${limit}`);
   }
 
+  GetJobsByUserId(page, limit): Observable<any> {
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+    return this.http.get(`${environment.url}/my-jobs?page=${page}&limit=${limit}`,{
+      withCredentials: true,
+      headers: headers
+    });
+  }
+
   GetNewJobOptions():Observable<any> {
     return this.http.get(`${environment.url}/job/new`);
   }

@@ -9,15 +9,15 @@ export class AuthService {
   constructor() { }
 
   public IsAuthenticated() : Boolean {
-    let userData = localStorage.getItem('lemon-cookie')
-    if(userData && JSON.parse(userData)){
+    let cookie = localStorage.getItem('lemon-cookie')
+    if(cookie && JSON.parse(cookie)){
       return true;
     }
     return false;
   }
 
-  public SetUserInfo(user){
-    localStorage.setItem('lemon-cookie', JSON.stringify(user));
+  public SetUserInfo(lemonCookie){
+    localStorage.setItem('lemon-cookie', JSON.stringify(lemonCookie));
   }
 
 }

@@ -21,6 +21,7 @@ import { EditJobComponent } from './edit-job/edit-job.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { UserJobsComponent } from './user-jobs/user-jobs.component';
 
 @NgModule({
   imports: [
@@ -44,7 +45,8 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
     RegisterComponent,
     LoginComponent,
     AuthNavbarComponent,
-    AdminPanelComponent
+    AdminPanelComponent,
+    UserJobsComponent
 ],
   exports: [
     NotFoundComponent,

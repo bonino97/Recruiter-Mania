@@ -1,8 +1,10 @@
 exports.SanitizeRegisterData = async (req,res,next) => {
-    req.sanitizeBody('FullName').escape();
+    req.sanitizeBody('FirstName').escape();
+    req.sanitizeBody('LastName').escape();
     req.sanitizeBody('Email').escape();
 
-    req.checkBody('FullName', 'The name cannot be empty').notEmpty();
+    req.checkBody('FirstName', 'The name cannot be empty').notEmpty();
+    req.checkBody('LastName', 'The lastname cannot be empty').notEmpty();
     req.checkBody('Email', 'The email cannot be empty').notEmpty();
     req.checkBody('Email', 'The email is invalid').isEmail();
     req.checkBody('Password', 'The password cannot be empty').notEmpty();

@@ -9,6 +9,7 @@ import { ProgressbarModule } from "ngx-bootstrap/progressbar";
 import { QuillModule } from 'ngx-quill';
 import { TagInputModule } from "ngx-chips";
 import { CollapseModule } from "ngx-bootstrap/collapse";
+import { TooltipModule } from "ngx-bootstrap/tooltip";
 
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NewJobComponent } from './new-job/new-job.component';
@@ -22,6 +23,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { UserJobsComponent } from './user-jobs/user-jobs.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 @NgModule({
   imports: [
@@ -33,6 +35,7 @@ import { UserJobsComponent } from './user-jobs/user-jobs.component';
     ProgressbarModule.forRoot(),
     QuillModule.forRoot(),
     CollapseModule.forRoot(),
+    TooltipModule.forRoot(),
     TagInputModule
 ],
   declarations: [
@@ -46,7 +49,8 @@ import { UserJobsComponent } from './user-jobs/user-jobs.component';
     LoginComponent,
     AuthNavbarComponent,
     AdminPanelComponent,
-    UserJobsComponent
+    UserJobsComponent,
+    EditProfileComponent
 ],
   exports: [
     NotFoundComponent,

@@ -10,14 +10,14 @@ passport.use('local', new LocalStrategy({
 
     const user = await User.findOne({ Email });
     if(!user) return done(null, false, {
-        msg: 'Incorrect Email.'
+        msg: 'Incorrect Email or Password...'
     });
     
     // Usuario existe, verificarlo.
     const verifyPassword = user.ComparePassword(Password);
 
     if(!verifyPassword) return done(null, false, {
-        msg: 'Incorrect Password.'
+        msg: 'Incorrect Email or Password...'
     });
 
     //Usuario existe y passsword es correcto

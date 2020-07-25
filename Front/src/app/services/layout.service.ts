@@ -16,6 +16,8 @@ export class LayoutService {
     private router: Router,
   ) { }
 
+  //Tengo que DIVIDIR este servicio YA mismo.
+
   GetPageOptions():Observable<any> {
     return this.http.get(environment.url);
   }
@@ -59,6 +61,24 @@ export class LayoutService {
     let headers = new HttpHeaders().set('Content-Type','application/json');
     
     return this.http.put(`${environment.url}/job/${job.Url}`, params, {
+      withCredentials: true,
+      headers: headers
+    });
+  }
+
+  GetUserInstance():Observable<any>{
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+    return this.http.get(`${environment.url}/me`,{
+      withCredentials: true,
+      headers: headers
+    });
+  }
+
+  UpdateProfile(user: any):Observable<any> {
+    let params = JSON.stringify(user);
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+    
+    return this.http.put(`${environment.url}/me`, params, {
       withCredentials: true,
       headers: headers
     });

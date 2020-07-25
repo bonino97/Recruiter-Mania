@@ -20,7 +20,7 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       {
-        path: "jobs",
+        path: "",
         loadChildren:
           "./layouts/layout/layout.module#LayoutModule"
       }

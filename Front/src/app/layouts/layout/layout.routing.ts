@@ -12,7 +12,7 @@ import { EditJobComponent } from 'src/app/pages/edit-job/edit-job.component';
 
 export const LayoutRoutes: Routes = [
     { path: "", component: JobsListComponent },
-    { path: "new-job", component: NewJobComponent },
+    { path: "new-job", component: NewJobComponent, canActivate : [AuthGuard]},
     { path: "job/:url", component: JobComponent },
     { path: "job/:url/edit", component: EditJobComponent, canActivate : [AuthGuard]},
     { path: "panel", component: AdminPanelComponent , canActivate : [AuthGuard]},

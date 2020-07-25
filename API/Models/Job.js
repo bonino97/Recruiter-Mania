@@ -44,7 +44,12 @@ const JobSchema = new mongoose.Schema({
         Name: String,
         Email: String,
         CV: String
-    }]
+    }],
+    User: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+        required: 'The User is required.'
+    }
 });
 
 JobSchema.pre('save', function(next){ //Funciona como Hook pre Guardado. (Leer documentacion, por que existen muchos.)

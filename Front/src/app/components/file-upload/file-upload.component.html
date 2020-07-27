@@ -1,0 +1,36 @@
+
+<div class="fileinput text-center">
+    <input type="file" (change)="handleImageChange($event)" #fileInput />
+    <div class="thumbnail" [ngClass]="{ 'img-circle': avatar }">
+      <img src="{{ imagePreviewUrl }}" alt="..." />
+    </div>
+    <div>
+      <button
+        *ngIf="file === null && avatar"
+        class="btn btn-danger btn-simple btn-sm"
+        (click)="handleClick()"
+      >
+        Upload
+      </button>
+      <button
+        *ngIf="file === null && !avatar"
+        class="btn btn-primary"
+        (click)="handleClick()"
+      >
+        Select image
+      </button>
+      <span *ngIf="file !== null">
+        <button (click)="uploadImage()" class="btn btn-success btn-simple btn-sm">
+          <i class="fas fa-check"></i>Submit
+        </button>
+        <button class="btn btn-info btn-simple btn-sm" (click)="handleClick()">
+          Change
+        </button>
+        <br *ngIf="avatar" />
+        <button class="btn btn-danger btn-simple btn-sm" (click)="handleRemove()">
+          <i class="fa fa-times"></i> Remove
+        </button>
+      </span>
+    </div>
+  </div>
+  

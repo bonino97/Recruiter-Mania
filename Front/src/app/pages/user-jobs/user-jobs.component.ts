@@ -149,8 +149,59 @@ export class UserJobsComponent implements OnInit {
     this.router.navigate([`/jobs/job/${job.Url}/edit`]);
   }
 
-  removeJob(job){
-    console.log(job);
+  deleteJob(job){
+
+    swal
+    .fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      type: "warning",
+      showCancelButton: true,
+      cancelButtonClass: "btn btn-danger btn-simple",
+      confirmButtonClass: "btn btn-success btn-simple",
+      confirmButtonText: "Yes",
+      cancelButtonText: "No",
+      buttonsStyling: false,
+      background: '#ffffff'
+    })
+    .then(result => {
+      if (result.value) {
+        this._LayoutService.DeleteJob(job._id)
+        .subscribe((data:any) => {
+          console.log(data);
+          this._LayoutService.GetJobsByUserId(1,this.limit)
+          .subscribe((data:any) => {
+            this.jobs = data.jobs.results;
+            this.actualPage = data.jobs.actualPage;
+    
+            if(!!data.jobs.previousPage){
+              this.previousPage = data.jobs.previousPage.page;
+              this.disablePreviousButton = false;
+            } else {
+              this.disablePreviousButton = true;
+            };
+            
+            if(!!data.jobs.nextPage){
+              this.nextPage = data.jobs.nextPage.page
+              this.disableNextButton = false;
+            } else {
+              this.disableNextButton = true;
+            };
+          })
+          swal.fire({
+            title: "Deleted.",
+            html: `<span style='color:grey'> ${job.Title} position deleted permanently... <span>`,
+            confirmButtonClass: "btn btn-danger btn-simple",
+            background: '#ffffff'
+          });
+
+        }, error => {
+          console.error(error);
+        });
+
+      }
+    });
+
   }
 
   openJob(job: Job){

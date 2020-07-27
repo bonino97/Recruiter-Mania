@@ -1,8 +1,11 @@
+
+import swal from "sweetalert2";
 import { Component, OnInit, ElementRef, OnDestroy } from "@angular/core";
 import { Location } from "@angular/common";
 import { ToastrService } from "ngx-toastr";
 import { Router } from "@angular/router";
 import { LayoutService } from './../../services/layout.service';
+import { AuthService } from './../../services/auth.service';
 
 var misc: any = {
   sidebar_mini_active: true
@@ -24,7 +27,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     private element: ElementRef,
     private router: Router,
     private toastr: ToastrService,
-    private _LayoutService: LayoutService
+    private _LayoutService: LayoutService,
+    private _AuthService: AuthService
   ) {
     this.location = location;
   }
@@ -50,5 +54,41 @@ export class NavbarComponent implements OnInit, OnDestroy {
       }
     }
     return "Dashboard";
+  }
+
+  logout(){
+    localStorage.removeItem("lemon-cookie");
+    localStorage.clear();
+    this._LayoutService.Logout()
+      .subscribe((data:any) => {
+        swal.fire({
+          html: "<span style='color:grey'> Closing... <span>",
+          timer: 1500,
+          showConfirmButton: false
+        }).then( () => {
+          this.router.navigate([`/login`]);
+        }, (error) => {
+          if(error.status === 401){
+            swal.fire({
+              html: `<span style='color:grey'> ${error.error.msg} <span>`,
+              buttonsStyling: false,
+              confirmButtonClass: "btn btn-danger btn-simple",
+              background: '#ffffff'
+            });
+            this.router.navigate([`/login`]);
+          }
+        });
+      }, (error: any) => {
+        if(error.status === 401){
+          swal.fire({
+            html: `<span style='color:grey'>Closing...<span>`,
+            buttonsStyling: false,
+            showConfirmButton: false,
+            timer: 1500,
+            background: '#ffffff'
+          });
+        }
+        this.router.navigate([`/login`]);
+      });
   }
 }

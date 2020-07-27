@@ -94,7 +94,7 @@
             *dropdownMenu
           >
             <li class=" nav-link">
-              <a class=" nav-item dropdown-item" href="javascript:void(0)">
+              <a class=" nav-item dropdown-item" [routerLink]="['/profile/edit-profile']" routerLinkActive="router-link-active">
                 Profile
               </a>
             </li>
@@ -105,7 +105,7 @@
             </li>
             <li class=" dropdown-divider"></li>
             <li class=" nav-link">
-              <a class=" nav-item dropdown-item" [routerLink]="['/login']" routerLinkActive="router-link-active" >
+              <a class=" nav-item dropdown-item" href="javascript:void(0)" (click)="logout()" >
                 Log out
               </a>
             </li>

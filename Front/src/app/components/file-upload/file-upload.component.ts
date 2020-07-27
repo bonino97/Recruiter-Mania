@@ -18,7 +18,7 @@ export class FileUploadComponent implements OnInit {
   userImage: any;
   file: any = {};
   imagePreviewUrl: any = {};
-  profilePathURL = `${environment.uploadsUrl}/Profiles`;
+  profilePathURL = `${environment.uploadsUrl}/Profiles/`;
 
   @ViewChild("fileInput") fileInput: ElementRef;
 

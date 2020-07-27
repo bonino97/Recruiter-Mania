@@ -66,7 +66,8 @@ export class LoginComponent implements OnInit, OnDestroy {
         }
 
       }, (error: any) => {
-
+        console.error(error);
+        
         if(error.error.message.msg){
           return swal.fire({
             html: `<span style='color:grey'>${error.error.message.msg}<span>`,
@@ -78,7 +79,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
         return swal.fire({
           type: 'error',
-          html: `<span style='color:grey'> Something wrong, please try later...<span>`,
+          html: `<span style='color:grey'> Something wrong, please try again...<span>`,
           buttonsStyling: false,
           confirmButtonClass: "btn btn-danger btn-simple",
           background: '#ffffff'

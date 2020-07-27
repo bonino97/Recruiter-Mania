@@ -28,6 +28,7 @@ exports.GetJobByUrl = async (req, res, next) => {
 
 exports.NewJob = async (req,res) => {
     try{
+        
         const job = new Job(req.body);  
         job.User = req.user._id;
         const jobInstance = await job.save();
@@ -67,4 +68,28 @@ exports.GetJobsByUserId = async (req,res) => {
         console.error(e);
         return res.status(400).json({message: e.message});
     }
+}
+
+exports.DeleteJob = async (req,res) => {
+    try{
+        const { id } = req.params;
+        const job = await Job.findById(id);
+
+        if(VerifyUser(job, req.user)){ //Valido que el usuario que elimina, es el usuario autor de la posicion de trabajo.
+            await job.remove();
+            return res.status(200).json({success: true, message: `${job.Title} position deleted correctly...`});
+        } 
+        
+        return res.status(401).json({success: false, message: `You haven't got permission to delete this job. But keep trying, happy hacking :)`});
+
+    } catch(e) {
+        console.error(e);
+    }
+}
+
+const VerifyUser = (job = {}, user = {}) => {
+    if(!job.User.equals(user._id)){
+        return false;
+    }
+    return true;
 }

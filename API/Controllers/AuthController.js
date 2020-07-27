@@ -26,8 +26,17 @@ exports.VerifyUser = async (req,res,next) => {
     if(req.isAuthenticated()) return next(); //Estan autenticados
     
     return res.status(401).json({
-        succes:false,
+        success:false,
         msg: 'You need to be logged...'
     });
 
+}
+
+exports.Logout = async(req,res) => {
+    try{
+        req.logout();
+        return res.status(200).json({success: true, msg: 'Session finished.'});
+    } catch(e){
+        console.error(e);
+    }
 }

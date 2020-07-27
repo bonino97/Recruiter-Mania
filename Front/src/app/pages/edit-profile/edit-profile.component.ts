@@ -109,7 +109,7 @@ export class EditProfileComponent implements OnInit {
         }
 
       }, (error: any) => {
-
+        console.log(error);
         if(!!error.error.msg){
           swal.fire({
             html: `<span style='color:grey'> ${error.error.msg} <span>`,

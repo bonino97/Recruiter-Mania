@@ -29,27 +29,30 @@ module.exports = () => {
     
     /* POST */
     // Cargar Nuevo Trabajo o Vacante.
-    router.post(`${apiUrl}/job/new`, AuthController.VerifyUser, JobsController.NewJob);
+    router.post(`${apiUrl}/job/new`, AuthController.VerifyUser, ValidationsController.SanitizeJobData, JobsController.NewJob);
 
     /* PUT */
     //Actualizar Trabajo
-    router.put(`${apiUrl}/job/:url`, AuthController.VerifyUser, JobsController.UpdateJob);
+    router.put(`${apiUrl}/job/:url`, AuthController.VerifyUser, ValidationsController.SanitizeJobData, JobsController.UpdateJob);
+
+    /* DELETE */
+    router.delete(`${apiUrl}/job/:id`, AuthController.VerifyUser, JobsController.DeleteJob);
     
     /*******************/
     /* UsersController */
     /*******************/
 
     router.post(`${apiUrl}/register`, ValidationsController.SanitizeRegisterData, UsersController.Register);
-    
     router.get(`${apiUrl}/me`, AuthController.VerifyUser, UsersController.GetMyInstance);
-
-    router.put(`${apiUrl}/me`, AuthController.VerifyUser, UsersController.UpdateProfile);
+    router.put(`${apiUrl}/me`, AuthController.VerifyUser, ValidationsController.SanitizeProfile, UsersController.UpdateProfile);
+    router.put(`${apiUrl}/me/avatar`, AuthController.VerifyUser, UsersController.UploadAvatar, UsersController.UpdateProfileAvatar);
 
     /*******************/
     /* AuthController  */
     /*******************/
 
     router.post(`${apiUrl}/login`, AuthController.AuthenticateUser);
+    router.post(`${apiUrl}/logout`, AuthController.Logout);
 
     return router;
 }

@@ -20,4 +20,9 @@ export class AuthService {
     localStorage.setItem('lemon-cookie', JSON.stringify(lemonCookie));
   }
 
+  public ClearStorage(){
+    localStorage.removeItem('lemon-cookie');
+    localStorage.clear();
+  }
+
 }

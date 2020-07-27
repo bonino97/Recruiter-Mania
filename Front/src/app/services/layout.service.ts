@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class LayoutService {
 
+
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -25,6 +26,8 @@ export class LayoutService {
   GetPanelOptions():Observable<any> {
     return this.http.get(`${environment.url}/panel`);
   }
+
+  //Jobs
 
   GetJobs(page, limit): Observable<any> {
     return this.http.get(`${environment.url}/jobs?page=${page}&limit=${limit}`);
@@ -66,6 +69,18 @@ export class LayoutService {
     });
   }
 
+  DeleteJob(id):Observable<any> {
+    
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+    return this.http.delete(`${environment.url}/job/${id}`, {
+      withCredentials: true,
+      headers: headers
+    });
+
+  }
+
+  //User
+
   GetUserInstance():Observable<any>{
     let headers = new HttpHeaders().set('Content-Type','application/json');
     return this.http.get(`${environment.url}/me`,{
@@ -96,6 +111,23 @@ export class LayoutService {
     let headers = new HttpHeaders().set('Content-Type','application/json');
     
     return this.http.post(`${environment.url}/login`, params, {
+      withCredentials: true,
+      headers: headers
+    });
+  }
+
+  Logout(){
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+    return this.http.post(`${environment.url}/logout`,{
+      withCredentials: true,
+      headers: headers
+    });
+  }
+
+  UploadAvatar(file: any) {
+    // let headers = new HttpHeaders().set('Content-Type','application/json');
+    let headers = new HttpHeaders();
+    return this.http.put(`${environment.url}/me/avatar`, file, {
       withCredentials: true,
       headers: headers
     });

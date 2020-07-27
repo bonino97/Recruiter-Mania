@@ -202,12 +202,12 @@ export class NewJobComponent implements OnInit {
 
   createJobForm() {
     return new FormGroup({
-      title: new FormControl('',  [Validators.required, Validators.minLength(1)]),
-      enterprise: new FormControl(''),
-      place: new FormControl('', [Validators.required, Validators.minLength(1)]),
-      salary: new FormControl(''),
-      contract: new FormControl(''),
-      seniority: new FormControl(''),
+      title: new FormControl('React Developer',  [Validators.required, Validators.minLength(1)]),
+      enterprise: new FormControl('Google'),
+      place: new FormControl('Remote', [Validators.required, Validators.minLength(1)]),
+      salary: new FormControl('1000'),
+      contract: new FormControl('Fulltime'),
+      seniority: new FormControl('Senior'),
       description: new FormControl('  Text here...'),
       skills: new FormControl(['Example Skill, please Delete!'])
     });

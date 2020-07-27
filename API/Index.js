@@ -49,4 +49,6 @@ app.use(passport.session());
 
 app.use('/', router()); //Rutas
 
+app.use(express.static('Uploads'));
+
 app.listen(process.env.PORT);

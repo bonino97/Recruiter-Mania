@@ -35,6 +35,7 @@ const UserSchema = new mongoose.Schema({
     FacebookUrl: String,
     Website: String,
     ProfileUrl: String,
+    Image: String,
 
     Token: String,
     Expires: Date

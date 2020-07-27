@@ -6,6 +6,7 @@ import { ToastrService } from "ngx-toastr";
 import { Router } from "@angular/router";
 import { LayoutService } from './../../services/layout.service';
 import { AuthService } from './../../services/auth.service';
+import { environment } from 'src/environments/environment';
 
 var misc: any = {
   sidebar_mini_active: true
@@ -20,6 +21,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
   public barOption: any;
   public isCollapsed = true;
 
+  user: any;
+  userImage: any;
+  file: any = {};
+  imagePreviewUrl: any = {};
+  profilePathURL = `${environment.uploadsUrl}/Profiles/`;
   location: Location;
 
   constructor(
@@ -36,6 +42,32 @@ export class NavbarComponent implements OnInit, OnDestroy {
   
   ngOnInit() {
     const navbar: HTMLElement = this.element.nativeElement;
+
+    this._LayoutService.GetUserInstance()
+    .subscribe((data:any) => {
+
+      this.user = data.data;
+      this.userImage = this.user.Image;
+      this.file = null;
+      
+      if(!!this.userImage){
+        this.imagePreviewUrl = `${this.profilePathURL}${this.userImage}`; 
+      } else {
+        this.imagePreviewUrl = "assets/img/image_placeholder.jpg";
+      }
+
+    }, (error: any) => {
+      if(error.status === 401){
+        swal.fire({
+          html: `<span style='color:grey'> ${error.error.msg} <span>`,
+          buttonsStyling: false,
+          confirmButtonClass: "btn btn-danger btn-simple",
+          background: '#ffffff'
+        });
+        this.router.navigate([`/login`]);
+      }
+    });
+
   }
 
   ngOnDestroy() {

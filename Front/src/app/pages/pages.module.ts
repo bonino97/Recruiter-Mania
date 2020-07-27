@@ -24,6 +24,7 @@ import { LoginComponent } from './login/login.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { UserJobsComponent } from './user-jobs/user-jobs.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { FileUploadComponent } from '../components/file-upload/file-upload.component';
 
 @NgModule({
   imports: [
@@ -50,7 +51,8 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     AuthNavbarComponent,
     AdminPanelComponent,
     UserJobsComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    FileUploadComponent
 ],
   exports: [
     NotFoundComponent,
@@ -58,7 +60,8 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     JobsListComponent,
     JobComponent,
     HeaderComponent,
-    AuthNavbarComponent
+    AuthNavbarComponent,
+    FileUploadComponent
 ]
 })
 

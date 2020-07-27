@@ -15,6 +15,7 @@ import { JwBootstrapSwitchNg2Module } from "jw-bootstrap-switch-ng2";
 
 import { FooterComponent } from "./footer/footer.component";
 import { NavbarComponent } from "./navbar/navbar.component";
+
 // import { AuthNavbarComponent } from './auth-navbar/auth-navbar.component';
 // import { HeaderComponent } from './header/header.component';
 
@@ -36,6 +37,7 @@ import { NavbarComponent } from "./navbar/navbar.component";
     declarations: [
       FooterComponent,
       NavbarComponent,
+      // FileUploadComponent,
       // AuthNavbarComponent,
       // HeaderComponent
     ],

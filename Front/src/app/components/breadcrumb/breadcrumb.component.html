@@ -1,0 +1,35 @@
+<div class="row animate__animated animate__fadeIn">
+  <div class="col-lg-5 col-md-6">
+    <nav aria-label="breadcrumb" role="navigation">
+      <ol class=" breadcrumb border">
+        <li *ngIf="!!home" class=" breadcrumb-item">
+          Home
+        </li>
+
+        <li *ngIf="!home && !!panel" class=" breadcrumb-item active">
+          <a [routerLink]="['/jobs']" routerLinkActive="router-link-active" >
+            Home
+          </a>
+        </li>
+
+        <li *ngIf="!home && !panel" class=" breadcrumb-item active">
+          <a [routerLink]="['/jobs']" routerLinkActive="router-link-active" >
+            Home
+          </a>
+        </li>
+
+        <li *ngIf="!!panel" class=" breadcrumb-item active">
+          Panel
+        </li>
+        <li *ngIf="!panel && !!candidates" class="breadcrumb-item">
+          <a [routerLink]="['/jobs/panel']" routerLinkActive="router-link-active" >
+            Panel
+          </a>
+        </li>
+        <li *ngIf="!!candidates" class=" breadcrumb-item active">
+          Candidates
+        </li>
+      </ol>
+    </nav>
+</div>
+</div>

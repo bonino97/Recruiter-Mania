@@ -49,6 +49,16 @@ export class LayoutService {
     return this.http.get(`${environment.url}/job/${url}`);
   }
 
+  GetJobCandidates(url):Observable<any> { 
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+
+    return this.http.get(`${environment.url}/job/${url}/candidates`,{
+      withCredentials: true,
+      headers: headers
+    });
+    
+  }
+
   PostNewJob(job:Job):Observable<any>{
     let params = JSON.stringify(job);
     let headers = new HttpHeaders().set('Content-Type','application/json');
@@ -77,6 +87,14 @@ export class LayoutService {
       headers: headers
     });
 
+  }
+
+  UploadResume(candidate: any, url) {
+    let headers = new HttpHeaders();
+    return this.http.post(`${environment.url}/job/${url}`, candidate, {
+      withCredentials: true,
+      headers: headers
+    });
   }
 
   //User
@@ -125,7 +143,6 @@ export class LayoutService {
   }
 
   UploadAvatar(file: any) {
-    // let headers = new HttpHeaders().set('Content-Type','application/json');
     let headers = new HttpHeaders();
     return this.http.put(`${environment.url}/me/avatar`, file, {
       withCredentials: true,

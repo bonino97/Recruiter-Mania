@@ -1,3 +1,4 @@
+<app-breadcrumb [home]="false" [panel]="true"></app-breadcrumb>
 <div class="row" *ngIf="!!jobs">
     <div class="col-lg-12">        
         <div class="card border animate__animated animate__fadeIn">
@@ -28,11 +29,21 @@
 
                       <div class="row justify-content-center">
                         <button
+                        *ngIf="job.Candidates != null"
                         class=" btn btn-info btn-link btn-sm btn-icon"
-                        tooltip="Candidates: {{job.Candidates}}"
+                        tooltip="Candidates: {{job.Candidates.length || '0'}}"
                         type="button"
+                        (click)="viewCandidates(job)" 
                         >
                         <i class=" tim-icons icon-badge"> </i>
+                        </button>
+                        <button
+                          *ngIf="job.Candidates == null"
+                          class=" btn btn-info btn-link btn-sm btn-icon"
+                          tooltip="Candidates: 0"
+                          type="button"
+                          >
+                          <i class=" tim-icons icon-badge"> </i>
                         </button>
                       </div>    
                     

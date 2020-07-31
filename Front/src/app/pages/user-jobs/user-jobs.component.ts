@@ -23,7 +23,6 @@ export class UserJobsComponent implements OnInit {
   nextPage;
   totalPages: Number[] = [];
   limit = 5;
-  candidates = 11;
 
   disablePreviousButton: boolean = false;
   disableNextButton: boolean = false;
@@ -168,7 +167,7 @@ export class UserJobsComponent implements OnInit {
       if (result.value) {
         this._LayoutService.DeleteJob(job._id)
         .subscribe((data:any) => {
-          console.log(data);
+          
           this._LayoutService.GetJobsByUserId(1,this.limit)
           .subscribe((data:any) => {
             this.jobs = data.jobs.results;
@@ -207,5 +206,9 @@ export class UserJobsComponent implements OnInit {
   openJob(job: Job){
     const jobUrl = `/jobs/job/${job.Url}`;
     this.router.navigate([jobUrl]);
+  }
+
+  viewCandidates(job:Job){
+    this.router.navigate([`/jobs/job/${job.Url}/candidates`]);
   }
 }

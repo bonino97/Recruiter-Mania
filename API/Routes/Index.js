@@ -26,10 +26,12 @@ module.exports = () => {
     router.get(`${apiUrl}/jobs`, JobsController.GetJobs);
     router.get(`${apiUrl}/job/:url`, JobsController.GetJobByUrl);
     router.get(`${apiUrl}/my-jobs`, JobsController.GetJobsByUserId);
+    router.get(`${apiUrl}/job/:url/candidates`, AuthController.VerifyUser, JobsController.GetCandidatesPerJob);
     
     /* POST */
     // Cargar Nuevo Trabajo o Vacante.
     router.post(`${apiUrl}/job/new`, AuthController.VerifyUser, ValidationsController.SanitizeJobData, JobsController.NewJob);
+    router.post(`${apiUrl}/job/:url`, JobsController.SendResume, JobsController.SaveCandidate);
 
     /* PUT */
     //Actualizar Trabajo

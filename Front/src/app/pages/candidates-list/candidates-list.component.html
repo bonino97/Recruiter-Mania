@@ -1,0 +1,40 @@
+<app-header getPath="Panel"></app-header>
+<app-breadcrumb [home]="false" [panel]="false" [candidates]="true"></app-breadcrumb>
+
+<div class="row animate__animated animate__fadeIn">
+    <div class="col-lg-12">        
+        <div class="card border">
+          <div class=" card-body">
+            <div class=" toolbar"></div>
+            <div class="dataTables_wrapper py-4">
+            <div class=" table-responsive">
+              <table class=" table">
+                <thead class=" text-primary">
+                  <tr>
+                    <th class=" text-left">First Name</th>
+                    <th class=" text-center">Last Name</th>
+                    <th class=" text-center">Email</th>
+                    <th class=" text-right">Linkedin</th>
+                    <th class=" text-right">Resume</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let candidate of candidates" >
+                    <td class="text-left">{{candidate.FirstName}}</td>
+                    <td class="text-center">{{candidate.LastName}} </td>
+                    <td class="text-center">{{candidate.Email}} </td>
+                    <td class="text-right">{{candidate.LinkedinUrl}}</td>
+                    <td class="text-right">
+                      <button class=" btn btn-danger btn-sm btn-simple" (click)="openCv(candidate.Resume)">
+                        View
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+    </div>
+  </div>

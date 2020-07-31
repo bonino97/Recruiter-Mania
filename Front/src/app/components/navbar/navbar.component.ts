@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 
 import swal from "sweetalert2";
 import { Component, OnInit, ElementRef, OnDestroy } from "@angular/core";
@@ -6,7 +7,6 @@ import { ToastrService } from "ngx-toastr";
 import { Router } from "@angular/router";
 import { LayoutService } from './../../services/layout.service';
 import { AuthService } from './../../services/auth.service';
-import { environment } from 'src/environments/environment';
 
 var misc: any = {
   sidebar_mini_active: true
@@ -53,7 +53,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       if(!!this.userImage){
         this.imagePreviewUrl = `${this.profilePathURL}${this.userImage}`; 
       } else {
-        this.imagePreviewUrl = "assets/img/image_placeholder.jpg";
+        this.imagePreviewUrl = "assets/img/placeholder.jpg";
       }
 
     }, (error: any) => {

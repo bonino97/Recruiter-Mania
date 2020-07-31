@@ -1,4 +1,4 @@
-import { environment } from './../../../environments/environment';
+import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { LayoutService } from 'src/app/services/layout.service';
 import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
@@ -31,7 +31,7 @@ export class FileUploadComponent implements OnInit {
     
     this._LayoutService.GetUserInstance()
     .subscribe((data:any) => {
-
+      console.log(data);
       this.user = data.data;
       this.userImage = this.user.Image;
       this.file = null;
@@ -39,7 +39,7 @@ export class FileUploadComponent implements OnInit {
       if(!!this.userImage){
         this.imagePreviewUrl = `${this.profilePathURL}${this.userImage}`; 
       } else {
-        this.imagePreviewUrl = "assets/img/image_placeholder.jpg";
+        this.imagePreviewUrl = "assets/img/placeholder.jpg";
       }
 
     }, (error: any) => {
@@ -97,17 +97,17 @@ export class FileUploadComponent implements OnInit {
     
     this._LayoutService.UploadAvatar(formData).subscribe((data:any) => {
       
-      if(data.success === true){
-        swal.fire({
-          html: `<span style='color:grey'> ${data.msg} <span>`,
+      if(data.success == true){
+        return swal.fire({
+          html: `<span style='color:grey'> ${data.message} <span>`,
           confirmButtonClass: "btn btn-danger btn-simple",
           background: '#ffffff',
           timer: 1500
         });
       }
 
-      if(data.success === false) {
-        swal.fire({
+      if(data.success == false) {
+        return swal.fire({
           html: `<span style='color:grey'> We cannot upload your image, verify the format... <span>`,
           confirmButtonClass: "btn btn-danger btn-simple",
           background: '#ffffff',
@@ -115,12 +115,40 @@ export class FileUploadComponent implements OnInit {
         });
       }
 
-    }, error => {
-      swal.fire({
-        html: `<span style='color:grey'> We cannot upload your image, verify the format... <span>`,
+    }, (error:any) => {
+      console.log(error);
+      if(error.success == false){
+        return swal.fire({
+          html: `<span style='color:grey'> ${error.message} <span>`,
+          buttonsStyling: false,
+          confirmButtonClass: "btn btn-danger btn-simple",
+          background: '#ffffff'
+        });
+      }
+
+      if(error.error.success == false){
+        return swal.fire({
+          html: `<span style='color:grey'> ${error.error.message} <span>`,
+          buttonsStyling: false,
+          confirmButtonClass: "btn btn-danger btn-simple",
+          background: '#ffffff'
+        });
+      }
+
+      if(error.error.error.success == false){
+        return swal.fire({
+          html: `<span style='color:grey'> ${error.error.error.message} <span>`,
+          buttonsStyling: false,
+          confirmButtonClass: "btn btn-danger btn-simple",
+          background: '#ffffff'
+        });
+      }
+
+      return swal.fire({
+        html: `<span style='color:grey'> Something wrong... <span>`,
+        buttonsStyling: false,
         confirmButtonClass: "btn btn-danger btn-simple",
-        background: '#ffffff',
-        timer: 1000
+        background: '#ffffff'
       });
     }) 
   }

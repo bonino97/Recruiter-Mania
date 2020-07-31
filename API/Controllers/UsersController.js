@@ -63,7 +63,7 @@ exports.UpdateProfile = async (req,res) => {
 //Configuracion de Multer
 
 const multerConfig = {
-    limits: { fileSize: 30000000 }, // 3 mb,
+    limits: { fileSize: 2000000 }, // 3 mb,
     storage: filerStorage = multer.diskStorage({
         destination: (req,file,cb) => {
             cb(null, __dirname+'../../Uploads/Profiles');
@@ -79,7 +79,7 @@ const multerConfig = {
             cb(null, true);
         } else {
             
-            cb(new Error('Invalid Format'));
+            cb(new Error('Invalid format, only JPG or PNG its allowed...'));
         }
     }
 }
@@ -94,18 +94,18 @@ exports.UploadAvatar = async (req,res,next) => {
                     if(error.code === 'LIMIT_FILE_SIZE') {
                         return res.status(400).json({
                             success: false,
-                            error:'File Exceed 3MB'
+                            message:'File Exceed 2MB'
                         });
                     } else {
                         return res.status(400).json({
                             success: false,
-                            error: error.message
+                            message: error.message
                         });
                     }
                 } else {
                     return res.status(400).json({
                         success: false,
-                        error: error.message
+                        message: error.message
                     });
                 }
             } else {
@@ -128,24 +128,21 @@ exports.UpdateProfileAvatar = async (req,res) => {
             user.save();
             return res.status(200).json({
                 success: true,
-                msg: 'Image uploaded succesfully...'
+                message: 'Image uploaded succesfully...'
             });
         }
 
         return res.status(400).json({
             success: false,
-            msg: 'We cant upload your image, please try again later...'
+            message: 'We cant upload your image, please try again later...'
         });
 
     } catch (e) {
         console.error(e);
         return res.status(400).json({
             success: false,
-            error: 'Something wrong...'
+            message: 'Something wrong...'
         });
     }
 }
 
-exports.GetImages = async (req,res) => {
-    
-}

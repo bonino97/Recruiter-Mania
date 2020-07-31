@@ -1,3 +1,4 @@
+
 import { EditProfileComponent } from './../../pages/edit-profile/edit-profile.component';
 import { AuthGuard } from './../../guards/auth.guard';
 import { AdminPanelComponent } from './../../pages/admin-panel/admin-panel.component';
@@ -9,6 +10,7 @@ import { NewJobComponent } from '../../pages/new-job/new-job.component';
 
 import { Routes } from '@angular/router';
 import { EditJobComponent } from 'src/app/pages/edit-job/edit-job.component';
+import { CandidatesListComponent } from 'src/app/pages/candidates-list/candidates-list.component';
 
 
 export const LayoutRoutes: Routes = [
@@ -17,6 +19,7 @@ export const LayoutRoutes: Routes = [
     { path: "jobs/new-job", component: NewJobComponent, canActivate : [AuthGuard], data: { animation: 'isRight' }},
     { path: "jobs/job/:url", component: JobComponent, data: { animation: 'isRight' }},
     { path: "jobs/job/:url/edit", component: EditJobComponent, canActivate : [AuthGuard], data: { animation: 'isRight' }},
+    { path: "jobs/job/:url/candidates", component: CandidatesListComponent, canActivate : [AuthGuard], data: { animation: 'isRight' }},
     { path: "jobs/panel", component: AdminPanelComponent , canActivate : [AuthGuard], data: { animation: 'isRight' }},
 
     /* USER ROUTES */

@@ -16,7 +16,7 @@
               <div class=" block block-three"></div>
               <div class=" block block-four"></div>
 
-            <h1 class="display-4">{{job.Title}}</h1><button class="btn btn-primary btn-sm btn-simple" (click)="editJob(job)">Edit</button>
+            <h1 class="display-4">{{job.Title}}</h1>
             
             </div>
 
@@ -56,8 +56,8 @@
               
               <div class="row">
 
-                <div class="col-md-4">
-                  
+                <div class="col-md-4  mt-3 ">
+                  <button (click)="myModal.show()" class="btn btn-neutral btn-sm float-left"> Apply </button>
                 </div>
 
                 <div class="col-md-4 mb-3 ml-auto mr-auto">
@@ -80,8 +80,6 @@
 
               </div>
 
-              
-
             </div>
 
           </div>
@@ -93,3 +91,147 @@
     </div>
   <!-- </div> -->
   
+  <div
+    bsModal
+    class="modal modal-black fade"
+    #myModal="bs-modal"
+    id="myModal"
+    role="dialog"
+    tabindex="-1"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header justify-content-center">
+          <button
+            aria-hidden="true"
+            class="close"
+            data-dismiss="modal"
+            type="button"
+            (click)="myModal.hide()"
+          >
+            <i class="tim-icons icon-simple-remove"> </i>
+          </button>
+          <h4 class="title title-up">Apply now</h4>
+        </div>
+        
+        <form [formGroup]="applyForm" class="form" (ngSubmit)="onApply()">
+          <div class="modal-body justify-content-center">
+
+            <div
+              class=" input-group"
+              [ngClass]="{ 'input-group-focus': focus2 === true }"
+              >
+              <div class=" input-group-prepend">
+                <div class=" input-group-text">
+                  <i class=" tim-icons icon-single-02"> </i>
+                </div>
+              </div>
+              <input
+                class=" form-control"
+                placeholder="First Name"
+                type="text"
+                (blur)="focus2 = false"
+                (focus)="focus2 = true"
+                formControlName="FirstName"
+                [class.is-invalid]="(f.FirstName.invalid) && (f.FirstName.dirty || f.FirstName.touched)"
+                [class.is-valid]="(!f.FirstName.invalid) && (f.FirstName.dirty || f.FirstName.touched)"
+              />
+              <div class="invalid-feedback  animate__animated animate__fadeIn">* This field is required.</div>
+            </div>
+
+            <div
+            class=" input-group"
+            [ngClass]="{ 'input-group-focus': focus3 === true }"
+            >
+              <div class=" input-group-prepend">
+                <div class=" input-group-text">
+                  <i class=" tim-icons icon-badge"> </i>
+                </div>
+              </div>
+              <input
+                class=" form-control"
+                placeholder="Last Name"
+                type="text"
+                (blur)="focus3 = false"
+                (focus)="focus3 = true"
+                formControlName="LastName"
+                [class.is-invalid]="(f.LastName.invalid) && (f.LastName.dirty || f.LastName.touched)"
+                [class.is-valid]="(!f.LastName.invalid) && (f.LastName.dirty || f.LastName.touched)"
+              />
+              <div class="invalid-feedback  animate__animated animate__fadeIn">* This field is required.</div>
+            </div>
+
+            <div class=" input-group has-label" [ngClass]="{'input-group-focus': focus === true}">
+
+              <div class=" input-group-prepend">
+                <div class=" input-group-text">
+                  <i class=" tim-icons icon-email-85"> </i>
+                </div>
+              </div>
+              
+              <input
+                class=" form-control"
+                placeholder="Email"
+                type="text"
+                (blur)="focus = false"
+                (focus)="focus = true"
+                formControlName="Email"
+                [class.is-invalid]="(f.Email.invalid) && (f.Email.dirty || f.Email.touched)"
+                [class.is-valid]="(!f.Email.invalid) && (f.Email.dirty || f.Email.touched)"
+              />
+              <div class="invalid-feedback  animate__animated animate__fadeIn">* Please enter a valid Email address.</div>
+
+            </div>
+
+            <div
+            class=" input-group"
+            [ngClass]="{ 'input-group-focus': focus4 === true }"
+            >
+              <div class=" input-group-prepend">
+                <div class=" input-group-text">
+                  <i class=" fab fa-linkedin"> </i>
+                </div>
+              </div>
+              <input
+                class=" form-control"
+                placeholder="Linkedin"
+                type="text"
+                (blur)="focus4 = false"
+                (focus)="focus4 = true"
+                formControlName="LinkedinUrl"
+                [class.is-valid]="(!f.LinkedinUrl.invalid) && (f.LinkedinUrl.dirty || f.LinkedinUrl.touched)"
+              />
+            </div>
+
+            <div
+            class=" input-group"
+            [ngClass]="{ 'input-group-focus': focus5 === true }"
+            >
+              <div class=" input-group-prepend">
+                <div class=" input-group-text">
+                  <i class="tim-icons icon-cloud-upload-94"> </i>
+                </div>
+              </div>
+              <input
+                class=" form-control"
+                placeholder="Resume"
+                type="file"
+                (blur)="focus5 = false"
+                (focus)="focus5 = true"
+                formControlName="Resume"
+                (change)="fileChange($event)"
+                [class.is-valid]="(!f.Resume.invalid) && (f.Resume.dirty || f.Resume.touched)"
+              />
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-success btn-sm btn" [disabled]="applyForm.invalid" (click)="myModal.hide()" type="submit">Send</button>
+            <button class="btn btn-danger btn-sm btn-simple" data-dismiss="modal" type="button" (click)="myModal.hide()">
+              Close
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

@@ -10,3 +10,20 @@
 //     margin: 5px 0;
 //     clear: both;
 // }
+
+.modal-content {
+    background: #27293d;
+}
+
+.modal.modal-black .modal-content {
+    border: 0.0625rem solid #E14ECA !important;
+    border-radius: 0.2857 rem;
+    background: linear-gradient(to bottom, #27293d 75%, #27293d 100%)
+}
+
+.was-validated .form-control:invalid, .form-control.is-invalid {
+    border-color: #2f323e;
+}
+.was-validated .form-control:invalid, .form-control.is-valid {
+    border-color: #2f323e;
+}

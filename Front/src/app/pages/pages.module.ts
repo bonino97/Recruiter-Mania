@@ -1,15 +1,17 @@
 
 
+
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { ProgressbarModule } from "ngx-bootstrap/progressbar";
-import { QuillModule } from 'ngx-quill';
 import { TagInputModule } from "ngx-chips";
 import { CollapseModule } from "ngx-bootstrap/collapse";
 import { TooltipModule } from "ngx-bootstrap/tooltip";
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NewJobComponent } from './new-job/new-job.component';
@@ -25,6 +27,9 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { UserJobsComponent } from './user-jobs/user-jobs.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { FileUploadComponent } from '../components/file-upload/file-upload.component';
+import { CandidatesListComponent } from './candidates-list/candidates-list.component';
+import { BreadcrumbComponent } from './../components/breadcrumb/breadcrumb.component';
+
 
 @NgModule({
   imports: [
@@ -34,10 +39,10 @@ import { FileUploadComponent } from '../components/file-upload/file-upload.compo
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: "never" }),
     HttpClientModule,
     ProgressbarModule.forRoot(),
-    QuillModule.forRoot(),
     CollapseModule.forRoot(),
     TooltipModule.forRoot(),
-    TagInputModule
+    TagInputModule,
+    ModalModule.forRoot()
 ],
   declarations: [
     NotFoundComponent,
@@ -52,7 +57,9 @@ import { FileUploadComponent } from '../components/file-upload/file-upload.compo
     AdminPanelComponent,
     UserJobsComponent,
     EditProfileComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    CandidatesListComponent,
+    BreadcrumbComponent
 ],
   exports: [
     NotFoundComponent,
@@ -61,7 +68,8 @@ import { FileUploadComponent } from '../components/file-upload/file-upload.compo
     JobComponent,
     HeaderComponent,
     AuthNavbarComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    BreadcrumbComponent
 ]
 })
 

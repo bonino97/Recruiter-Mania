@@ -41,9 +41,11 @@ const JobSchema = new mongoose.Schema({
     }, 
     Skills: [String],
     Candidates: [{
-        Name: String,
+        FirstName: String,
+        LastName: String,
         Email: String,
-        CV: String
+        LinkedinUrl: String,
+        Resume: String
     }],
     User: {
         type: mongoose.Schema.ObjectId,
@@ -54,11 +56,16 @@ const JobSchema = new mongoose.Schema({
 
 JobSchema.pre('save', function(next){ //Funciona como Hook pre Guardado. (Leer documentacion, por que existen muchos.)
     //Crear la URL
-    const Url = slug(this.Title);
-    this.Url = `${Url}-${shortId.generate()}`;
-
-    next();
-
+    console.log(this.Url);
+    if(this.Url == null) {
+        const Url = slug(this.Title);
+        this.Url = `${Url}-${shortId.generate()}`;
+    
+        next();
+    } else {
+        next();
+    }
 }); 
+
 
 module.exports = mongoose.model('Job', JobSchema);

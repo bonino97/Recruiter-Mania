@@ -29,6 +29,8 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { FileUploadComponent } from '../components/file-upload/file-upload.component';
 import { CandidatesListComponent } from './candidates-list/candidates-list.component';
 import { BreadcrumbComponent } from './../components/breadcrumb/breadcrumb.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 @NgModule({
@@ -59,7 +61,9 @@ import { BreadcrumbComponent } from './../components/breadcrumb/breadcrumb.compo
     EditProfileComponent,
     FileUploadComponent,
     CandidatesListComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent
 ],
   exports: [
     NotFoundComponent,

@@ -150,4 +150,21 @@ export class LayoutService {
     });
   }
 
+  ForgotPassword(email: any):Observable<any> {
+    let params = JSON.stringify(email);
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+    return this.http.post(`${environment.url}/forgot-password`, params, { headers: headers });
+  }
+
+  VerifyToken(token: any):Observable<any> {
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+    return this.http.get(`${environment.url}/reset-password/${token}`,{headers: headers});
+  }
+
+  ResetPassword(reset):Observable<any> {
+    let params = JSON.stringify(reset);
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+    return this.http.post(`${environment.url}/reset-password`, params, { headers: headers });
+  }
+
 }

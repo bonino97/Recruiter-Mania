@@ -16,8 +16,9 @@ require('./Config/Passport');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
-require('dotenv').config({path: '.env'});
 
+
+require('dotenv').config({path: '.env'});
 app.use(expressValidator()); //Express Validator para Sanitizar Entradas
 
 app.use(cors({

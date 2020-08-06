@@ -53,8 +53,12 @@ module.exports = () => {
     /* AuthController  */
     /*******************/
 
+
     router.post(`${apiUrl}/login`, AuthController.AuthenticateUser);
     router.post(`${apiUrl}/logout`, AuthController.Logout);
-
+    router.post(`${apiUrl}/forgot-password`, AuthController.ForgotPassword);
+    router.get(`${apiUrl}/reset-password/:token`, AuthController.VerifyToken)
+    router.post(`${apiUrl}/reset-password`, AuthController.ResetPassword)
+    
     return router;
 }

@@ -32,7 +32,7 @@
             <span class=" d-lg-none d-md-block"> Search </span>
           </button>
         </li>
-        <li class=" dropdown nav-item" dropdown>
+        <li *ngIf="!!this.user" class=" dropdown nav-item" dropdown>
           <a
             class=" dropdown-toggle nav-link dropdown-toggle"
             data-toggle="dropdown"
@@ -75,7 +75,7 @@
             </li>
           </ul>
         </li>
-        <li class="dropdown nav-item" dropdown placement="bottom left">
+        <li *ngIf="!!this.user" class="dropdown nav-item" dropdown placement="bottom left">
           <a
             class="nav-link dropdown-toggle"
             data-toggle="dropdown"

@@ -42,32 +42,35 @@ export class NavbarComponent implements OnInit, OnDestroy {
   
   ngOnInit() {
     const navbar: HTMLElement = this.element.nativeElement;
-
-    this._LayoutService.GetUserInstance()
-    .subscribe((data:any) => {
-
-      this.user = data.data;
-      this.userImage = this.user.Image;
-      this.file = null;
-      
-      if(!!this.userImage){
-        this.imagePreviewUrl = `${this.profilePathURL}${this.userImage}`; 
-      } else {
-        this.imagePreviewUrl = "assets/img/placeholder.jpg";
-      }
-
-    }, (error: any) => {
-      if(error.status === 401){
-        swal.fire({
-          html: `<span style='color:grey'> ${error.error.msg} <span>`,
-          buttonsStyling: false,
-          confirmButtonClass: "btn btn-danger btn-simple",
-          background: '#ffffff'
-        });
-        this.router.navigate([`/login`]);
-      }
-    });
-
+    if(localStorage.getItem('lemon-cookie')){
+      this._LayoutService.GetUserInstance()
+      .subscribe((data:any) => {
+  
+        this.user = data.data;
+        this.userImage = this.user.Image;
+        this.file = null;
+        
+        if(!!this.userImage){
+          this.imagePreviewUrl = `${this.profilePathURL}${this.userImage}`; 
+        } else {
+          this.imagePreviewUrl = "assets/img/placeholder.jpg";
+        }
+  
+      }, (error: any) => {
+        if(error.status === 401){
+          swal.fire({
+            html: `<span style='color:grey'> ${error.error.msg} <span>`,
+            buttonsStyling: false,
+            confirmButtonClass: "btn btn-danger btn-simple",
+            background: '#ffffff'
+          });
+          this.router.navigate([`/login`]);
+        }
+      });
+    } else {
+      this.imagePreviewUrl = "assets/img/placeholder.jpg";
+      this.router.navigate([`/jobs`]);
+    }
   }
 
   ngOnDestroy() {

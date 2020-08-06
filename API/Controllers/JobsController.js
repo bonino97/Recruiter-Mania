@@ -2,7 +2,6 @@ const Job = require('../Models/Job');
 const { PaginatedResults, PaginatedResultsById } = require('../Helpers/PaginatedResults');
 const multer = require('multer');
 const shortid = require('shortid');
-const e = require('express');
 
 exports.GetJobs = async (req,res) => {
     try {

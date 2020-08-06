@@ -15,18 +15,14 @@ import { CandidatesListComponent } from 'src/app/pages/candidates-list/candidate
 
 export const LayoutRoutes: Routes = [
     /* JOBS ROUTES */
-    { path: "jobs", component: JobsListComponent, data: { animation: 'isRight' }},
-    { path: "jobs/new-job", component: NewJobComponent, canActivate : [AuthGuard], data: { animation: 'isRight' }},
-    { path: "jobs/job/:url", component: JobComponent, data: { animation: 'isRight' }},
-    { path: "jobs/job/:url/edit", component: EditJobComponent, canActivate : [AuthGuard], data: { animation: 'isRight' }},
-    { path: "jobs/job/:url/candidates", component: CandidatesListComponent, canActivate : [AuthGuard], data: { animation: 'isRight' }},
-    { path: "jobs/panel", component: AdminPanelComponent , canActivate : [AuthGuard], data: { animation: 'isRight' }},
+    { path: "jobs", component: JobsListComponent},
+    { path: "jobs/new-job", component: NewJobComponent, canActivate : [AuthGuard]},
+    { path: "jobs/job/:url", component: JobComponent},
+    { path: "jobs/job/:url/edit", component: EditJobComponent, canActivate : [AuthGuard]},
+    { path: "jobs/job/:url/candidates", component: CandidatesListComponent, canActivate : [AuthGuard]},
+    { path: "jobs/panel", component: AdminPanelComponent , canActivate : [AuthGuard]},
 
     /* USER ROUTES */
-    { path: "profile/edit-profile", component: EditProfileComponent , canActivate : [AuthGuard], data: { animation: 'isRight' }},
-
-
-    
-    { path: "not-found", component: NotFoundComponent }
+    { path: "profile/edit-profile", component: EditProfileComponent , canActivate : [AuthGuard]}
   ];
   
